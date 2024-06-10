@@ -450,12 +450,13 @@
 
 .creator {
     display: flex;
+    flex-direction: column;
     background: #ffffff; /* Tile background */
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 30px;
     width: 350px; /* Fixed width for the tile */
-    height: 150px;
+    height: 400px; /* Increased height for more space */
     box-sizing: border-box;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -463,6 +464,19 @@
 .creator:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.quote {
+    font-size: 14px;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 20px; /* Space between quote and bottom section */
+}
+
+.creator-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Push the bottom section to the bottom */
 }
 
 .creator img {
@@ -475,20 +489,18 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.creator-content {
+.creator-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-width: 200px; /* Ensure text wraps within the tile */
 }
 
-.creator-content h4 {
+.creator-info h3 {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
 }
 
-.creator-content p {
+.creator-info span {
     margin: 5px 0 0;
     font-size: 14px;
     color: #555;
