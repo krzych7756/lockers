@@ -492,14 +492,7 @@
 .creator-info {
     display: flex;
     flex-direction: column;
-    margin-top: 0; /* Adjust as needed */
-    margin-bottom: 0; /* Adjust as needed */
-    margin-left: 20px; /* Adjust as needed */
-    margin-right: 0; /* Adjust as needed */
-    padding-top: 0; /* Adjust as needed */
-    padding-bottom: 20px; /* Adjust as needed */
-    padding-left: 0; /* Adjust as needed */
-    padding-right: 0; /* Adjust as needed */
+    margin: 0; /* Reset all margins */
 }
 
 .creator-info h3 {
@@ -509,11 +502,21 @@
 }
 
 .creator-info span {
-    margin: 5px 0 0;
+    margin: 0;
     font-size: 14px;
     color: #555;
 }
 
+.creator-info-adjustable {
+    margin-top: 0; /* Adjust as needed */
+    margin-bottom: 0; /* Adjust as needed */
+    margin-left: 0; /* Adjust as needed */
+    margin-right: 0; /* Adjust as needed */
+    padding-top: 0; /* Adjust as needed */
+    padding-bottom: 0; /* Adjust as needed */
+    padding-left: 0; /* Adjust as needed */
+    padding-right: 0; /* Adjust as needed */
+}
 .creator p {
     color: #666;
     font-style: italic; /* Italic for the quote */
@@ -1545,7 +1548,7 @@ img.unique-img {
             <div class="quote">System Lockers to bezpośrednia odpowiedź na potrzeby większości branż.</div>
             <div class="creator-bottom">
                 <img src="https://gryc24.pl/res/files/tomek-sigma.png" alt="Tomasz Gryc">
-                <div class="creator-info">
+                <div class="creator-info creator-info-adjustable" style="margin-left: 0; padding-left: 0;">
                     <h3>Tomasz Gryc</h3>
                     <span>CEO GRYC&Hakner</span>
                     <span>Nadzorca projektu</span>
@@ -1556,7 +1559,7 @@ img.unique-img {
             <div class="quote">Dążę do tego, aby zarządzanie dostępem stało się normą, a nie luksusem.</div>
             <div class="creator-bottom">
                 <img src="https://gryc24.pl/res/files/marcin-sigma.png" alt="Marcin Laskowski">
-                <div class="creator-info">
+                <div class="creator-info creator-info-adjustable" style="margin-left: 0; padding-left: 0;">
                     <h3>Marcin Laskowski</h3>
                     <span>Dyrektor Handlowy</span>
                     <span>Pomysłodawca</span>
@@ -1567,7 +1570,7 @@ img.unique-img {
             <div class="quote">Zaprojektowaliśmy ten system w zgodzie z najwyższymi standardami.</div>
             <div class="creator-bottom">
                 <img src="https://gryc24.pl/res/files/michal-sigma.png" alt="Michał Albrecht">
-                <div class="creator-info">
+                <div class="creator-info creator-info-adjustable" style="margin-left: 0; padding-left: 0;">
                     <h3>Michał Albrecht</h3>
                     <span>Główny programista</span>
                     <span>Twórca systemu</span>
