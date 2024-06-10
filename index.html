@@ -1217,6 +1217,22 @@ img.unique-img {
         margin: 10px auto !important;
     }
 }
+.contact-label {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it stays on top */
+    border-radius: 8px 0 0 8px;
+    text-align: center;
+    transition: right 0.3s ease-in-out;
+}
+
 .contact-card {
     position: fixed;
     right: -300px; /* Hidden position */
@@ -1227,29 +1243,18 @@ img.unique-img {
     color: white;
     border-radius: 8px 0 0 8px;
     transition: right 0.3s ease-in-out;
-    cursor: pointer;
+    z-index: 999; /* Ensure it's below the label */
+    padding: 20px;
 }
 
 .contact-card.open {
     right: 0; /* Slide out */
 }
 
-.contact-card-header {
-    padding: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-}
-
 .contact-card-content {
-    padding: 20px;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.contact-card.open .contact-card-content {
-    display: flex;
 }
 
 .contact-card-content p {
@@ -1270,6 +1275,10 @@ img.unique-img {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.contact-card-content button:hover {
+    background-color: #f1f1f1;
 }
 
 .contact-card-content button:hover {
@@ -1920,8 +1929,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-document.getElementById('contactCard').addEventListener('click', function() {
-    this.classList.toggle('open');
+document.getElementById('contactLabel').addEventListener('click', function() {
+    document.getElementById('contactCard').classList.toggle('open');
 });
 
 document.getElementById('contactForm').addEventListener('submit', function(event) {
@@ -1938,6 +1947,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     .then(response => response.text())
     .then(data => {
         alert('Twoja prośba została wysłana.');
+        document.getElementById('contactCard').classList.remove('open');
     })
     .catch(error => {
         console.error('Error:', error);
