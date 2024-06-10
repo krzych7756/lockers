@@ -449,7 +449,9 @@
 }
 
 .creator {
-    display: block; /* Allow the image to float within the text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: left;
     background: #ffffff; /* Tile background */
     border-radius: 20px;
@@ -458,14 +460,22 @@
     width: 350px; /* Fixed width for the tile */
     height: 350px;
     box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.creator:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 .creator img {
-    border-radius: 10%;
+    border-radius: 50%; /* Circular image */
+    border: 5px solid #ffffff; /* White border around the image */
     width: 140px;
     height: 140px;
     object-fit: cover;
-    margin: 30px 0px 0px -15px !important; /* Adjusted margin for image */
+    margin-bottom: 20px; /* Space between image and text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .creator p {
