@@ -1968,23 +1968,20 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         console.error('Error:', error);
     });
 });
-document.addEventListener("DOMContentLoaded", function() {
+function toggleContactCard() {
     var contactLabel = document.getElementById("contactLabel");
     var contactCard = document.getElementById("contactCard");
-    var phoneNumberInput = document.getElementById("phoneNumberInput");
-
-    contactLabel.addEventListener("click", function() {
-        contactLabel.style.right = "-300px"; // Schowanie pierwszej etykiety
-        contactCard.style.right = "0"; // Pokazanie karty kontaktowej
-    });
-
-    phoneNumberInput.addEventListener("blur", function() {
-        if (phoneNumberInput.value === "") {
-            contactLabel.style.right = "0"; // Pokazanie ponownie pierwszej etykiety
-            contactCard.style.right = "-300px"; // Schowanie karty kontaktowej
-        }
-    });
-});
+    
+    if (contactCard.classList.contains("open")) {
+        // Hide the contact card and show the label
+        contactCard.classList.remove("open");
+        contactLabel.style.right = '0'; // Show the label
+    } else {
+        // Show the contact card and hide the label
+        contactCard.classList.add("open");
+        contactLabel.style.right = '-200px'; // Hide the label
+    }
+}
 </script>
     </script>
 </html>
