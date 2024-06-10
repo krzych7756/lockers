@@ -1920,7 +1920,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+document.getElementById('contactCard').addEventListener('click', function() {
+    this.classList.toggle('open');
+});
 
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var phoneNumber = document.getElementById('phoneNumber').value;
+
+    fetch('send_email.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'phoneNumber=' + encodeURIComponent(phoneNumber)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Twoja prośba została wysłana.');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 </script>
     </script>
 </html>
