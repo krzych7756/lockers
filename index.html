@@ -450,15 +450,12 @@
 
 .creator {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
     background: #ffffff; /* Tile background */
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 30px;
     width: 350px; /* Fixed width for the tile */
-    height: 350px;
+    height: 150px;
     box-sizing: border-box;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -471,11 +468,30 @@
 .creator img {
     border-radius: 50%; /* Circular image */
     border: 5px solid #ffffff; /* White border around the image */
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    margin-bottom: 20px; /* Space between image and text */
+    margin-right: 20px; /* Space between image and text */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.creator-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 200px; /* Ensure text wraps within the tile */
+}
+
+.creator-content h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.creator-content p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
 }
 
 .creator p {
