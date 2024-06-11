@@ -24,7 +24,9 @@
             max-width: 1200px !important; 
             margin: 0 auto !important; 
         }
-
+	
+<!-- ###Pasek nawigacyjny na samej górze strony (i pozycja sticky, aby przylegał do ekranu przy przewijaniu)### -->
+	
        header {
     background: rgba(29, 53, 87, 0.9); /* Kolor z przezroczystością */
     color: #fff;
@@ -63,6 +65,8 @@
             font-weight: 700 !important; 
         }
 
+<!-- ###HERO strony, wraz z buttonem, grafiką, nakładką na copy i tekstem na zdjęciu ###-->
+	
         .hero {
             background: url('https://gryc24.pl/res/files/lockers-herolp.svg') no-repeat center center/contain !important; 
             color: #fff !important; 
@@ -122,6 +126,8 @@
             transform: scale(1.05) !important;
         }
 
+<!-- Animacja pojawiania się elementów przy przewijaniu strony -->
+
         @keyframes fadeInDown {
             from { opacity: 0 !important; transform: translateY(-50px) !important; }
             to { opacity: 1 !important; transform: translateY(0) !important; }
@@ -137,6 +143,8 @@
             to { opacity: 1 !important; }
         }
 
+<!-- Stylowanie ogólne kontenerów w 10 sekcjach -->
+	
         .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
     padding: 40px 20px !important;
     text-align: center !important;
@@ -154,15 +162,20 @@
     transform: translateY(0); /* Przesuwamy do pierwotnej pozycji */
 }
 
+<!-- Zmiana koloru i dolnego odstępu nagłówka h2 tylko w sekcji z formularzem -->
 .contact-form h2 {
     color: #192e4c !important;
     margin-bottom: 20px;
 }
 
+<!-- Padding przed sekcją values, aby uniknąć nachodzenia dwóch sekcji -->
+	
 .use-cases {
     padding: 10px !important;
 }
 
+<!-- ###Sekcja wartości (values)### -->
+	
 .values {
     display: flex !important;
     flex-direction: column !important;
@@ -237,6 +250,8 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6) !important;
 }
 
+<!-- ###Sekcja Formularz kontaktowy### -->
+	
 .contact-form form {
     display: flex !important;
     flex-direction: column !important;
@@ -257,7 +272,9 @@
         .contact-form form input:focus, .contact-form form textarea:focus {
             border-color: #e63946 !important;
         }
-		
+
+<!-- ###Sekcja Use Cases wraz ze stylowaniem karuzeli### -->
+	
 		.use-cases {
     padding-bottom: 30px !important;
     height: auto !important;
@@ -310,6 +327,8 @@
     color: #fff; /* Text color remains white on hover */
 }
 
+<!-- Wygląd kontenera, w którym znajduje się karuzela -->
+	
 .container {
     display: flex !important;
     justify-content: center !important;
@@ -323,6 +342,8 @@
     100% { transform: translateY(0); }
 }
 
+<!-- Stylowanie kart karuzeli -->
+	
 .use-cases .carousel-item {
     scroll-snap-align: start !important;
     flex: none !important;
@@ -345,6 +366,8 @@
     animation-play-state: running; /* Ensure animation is running */
 }
 
+<!-- Zatrzymanie animacji przy najechaniu myszką na kontener karuzeli -->	
+	
 .use-cases .carousel:hover .carousel-item {
     animation-play-state: paused !important; /* Pause animation on hover */
 }
@@ -371,6 +394,8 @@
     color: #1d3557 !important; /* Darker subtitle color */
 }
 
+<!-- Zmiana koloru karty karuzeli na czerwony przy najechaniu myszką -->
+	
 .use-cases .carousel-item:hover {
     background-color: #e63946 !important; 
     color: #fff !important; /* Change text color on hover */
@@ -378,6 +403,8 @@
     box-shadow: 0 6px 16px rgba(230, 57, 70, 0.5) !important; /* Darker red shadow on hover */
 }
 
+<!-- Stylowanie obrazków w karuzeli -->
+	
 .use-cases .carousel-item img {
     width: 100% !important;
     height: auto !important;
@@ -409,10 +436,14 @@
     align-self: center !important; /* Center button horizontally */
 }
 
+<!-- Zmiana koloru przycisku -->
+	
 .use-cases .carousel-item button:hover {
     background: #457b9d !important; /* Change button color on hover */
     transform: scale(1.1) !important;
 }
+
+<!-- Extra content=zawartość wyświetlana po rozwinięciu karty karuzeli -->
 
 .use-cases .extra-content {
     display: none !important; 
@@ -426,7 +457,8 @@
     height: auto !important; 
 }
 
-
+<!-- ###Etyketa z prawej strony ekranu###-->
+	
 .contact-label {
     position: fixed;
     right: 0;
@@ -853,6 +885,9 @@ img.unique-img {
   display: block;
   transition-duration: .3s;
 }
+
+<!-- RWD strony -->
+	
 @media (max-width: 800px) {
   /* Ogólne style */
   * {
@@ -1335,6 +1370,8 @@ img.unique-img {
         <h2>Zainteresowany? Skontaktuj się z nami!</h2>
         <a href="#contact-form">Wypełnij formularz kontaktowy</a>
     </section>
+
+<br></br>
 
 <!-- Wygoda-->
 <section id="features" class="gryc-section">
