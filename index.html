@@ -921,7 +921,6 @@ img.unique-img {
     }
 
     .values,
-    .use-cases,
     .testimonials,
     .product-images,
     .stats {
@@ -961,7 +960,6 @@ img.unique-img {
 
     .use-cases .carousel-item {
         scroll-snap-align: start !important;
-        flex: none !important;
         width: 100% !important;
         margin-right: 10px !important;
         background: #ffffff !important;
@@ -975,7 +973,10 @@ img.unique-img {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        height: 70vh !important; /* Wysokość kart na 70% wysokości ekranu */
+        width: 100% !important;
+        height: 70vh !important;
+        margin: 10px 0 !important;
+    }
     }
 
     .left-arrow,
@@ -1114,6 +1115,12 @@ html, body {
 .feature-item:hover::before {
     top: 0 !important;
 }
+
+ .unique-img, .product-images img, .carousel-item img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 80vh !important;
+    }
 </style>
 <body>
     <header>
