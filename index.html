@@ -1012,6 +1012,7 @@ img.unique-img {
     /* Po kliknięciu na kafelek */
     .value-item.clicked {
         height: 200px !important;  /* Długość po kliknięciu */
+	transform: none !important;
     }
 }
 
@@ -1331,6 +1332,9 @@ img.unique-img {
         width: 20% !important; /* Full width minus padding */
         margin: 10px 10px !important; /* Adjust margins for mobile */
         padding: 10px !important; /* Adjust padding for mobile */
+	display: flex !important; 
+        flex-direction: column !important; 
+        align-items: center !important;  /* Wyrównanie na środku ekranu */
     }
 
     .left-arrow,
