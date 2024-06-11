@@ -757,6 +757,7 @@ img.unique-img {
         padding: 0 !important;
         box-sizing: border-box !important;
     }
+
     body {
         font-family: Arial, sans-serif !important;
         line-height: 1.6 !important;
@@ -766,6 +767,21 @@ img.unique-img {
         margin: 0 !important;
     }
 
+    header {
+        padding: 10px 20px;
+        justify-content: center;
+    }
+
+    header h1 {
+        font-size: 1.2em !important;
+    }
+
+    header nav {
+        display: none !important;
+    }
+
+    .hero {
+        height: 70vh !important;
         text-align: center !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -777,6 +793,43 @@ img.unique-img {
     }
 
     .hero h1 {
+        font-size: 1.5em !important;
+    }
+
+    .hero p {
+        font-size: 1em !important;
+    }
+
+    .hero a {
+        padding: 5px 15px !important;
+        font-size: 0.9em !important;
+    }
+
+    .section,
+    .values,
+    .cta,
+    .contact-form,
+    .use-cases,
+    .testimonials,
+    .creator,
+    .product-images,
+    .stats,
+    footer {
+        padding: 20px 10px !important;
+        margin: 15px 0 !important;
+    }
+
+    .values,
+    .use-cases,
+    .testimonials,
+    .product-images,
+    .stats {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .value-item,
     .stats-item {
         width: 90% !important;
         margin: 10px 0 !important;
@@ -806,7 +859,6 @@ img.unique-img {
     }
 
     .use-cases .carousel-item {
-        height: 70vh !important;
         scroll-snap-align: start !important;
         flex: none !important;
         width: 100% !important;
@@ -826,6 +878,67 @@ img.unique-img {
     }
 
     .left-arrow,
+    .right-arrow {
+        font-size: 20px !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        width: 90% !important;
+    }
+
+    .opinion-section {
+        flex-direction: column !important;
+        padding: 20px 10px !important;
+    }
+
+    .creator {
+        width: 90% !important;
+        height: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+    .product-images img {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .creator img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .creator h3,
+    .creator span {
+        font-size: 1em !important;
+    }
+
+    footer {
+        padding: 15px !important;
+    }
+
+    .unique-heading,
+    .container-all-unique {
+        text-align: center;
+    }
+
+    .container-unique {
+        width: 100% !important;
+        margin: 10px 0 !important;
+        padding: 10px !important;
+    }
+
+    .title-unique,
+    .text-unique {
+        font-size: 1em !important;
+    }
+
+    .contact-label,
+    .contact-card {
+        width: 90% !important;
         padding: 10px !important;
         right: 5% !important;
     }
@@ -840,6 +953,65 @@ img.unique-img {
 /* Global reset to prevent horizontal scrolling */
 html, body {
     overflow-x: hidden !important;
+}
+
+/* Feature Items Section */
+.iconsbig {
+    width: 100px !important;
+    height: 100px !important;
+    transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out !important;
+}
+
+.iconsbig:hover {
+    transform: scale(1.2) rotate(15deg) !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.feature-item {
+    border: 0px solid #192e4c !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px !important;
+    background-color: #fff !important;
+    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6) !important;
+    z-index: 1 !important;
+    width: calc(100% - 40px) !important; /* Ensure it fits within the container */
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.feature-item:hover {
+    transform: translateY(-15px) !important;
+    background-color: #e63946 !important;
+    color: #fff !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.feature-item:hover .font-alt {
+    color: #fff !important;
+}
+
+.feature-item:hover .text-muted {
+    color: #fff !important;
+}
+
+.feature-item::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    transition: top 0.6s ease-in-out !important;
+    z-index: -1 !important;
+}
+
+.feature-item:hover::before {
+    top: 0 !important;
 }
 
 </style>
@@ -1490,6 +1662,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 contactLabel.classList.add("hidden"); // Hide the label
             }
         }
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.use-cases .carousel');
+
+    carousels.forEach(carousel => {
+        const items = carousel.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+
+        const updateCarousel = () => {
+            const width = carousel.offsetWidth;
+            carousel.style.transform = `translateX(${-currentIndex * width}px)`;
+        };
+
+        carousel.addEventListener('touchstart', handleTouchStart, false);
+        carousel.addEventListener('touchmove', handleTouchMove, false);
+
+        let xStart = null;
+        let yStart = null;
+
+        function handleTouchStart(event) {
+            const firstTouch = event.touches[0];
+            xStart = firstTouch.clientX;
+            yStart = firstTouch.clientY;
+        }
+
+        function handleTouchMove(event) {
+            if (!xStart || !yStart) {
+                return;
+            }
+
+            let xEnd = event.touches[0].clientX;
+            let yEnd = event.touches[0].clientY;
+
+            let xDiff = xStart - xEnd;
+            let yDiff = yStart - yEnd;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                // swipe left or right
+                if (xDiff > 0) {
+                    currentIndex = (currentIndex + 1) % items.length;
+                } else {
+                    currentIndex = (currentIndex - 1 + items.length) % items.length;
+                }
+                updateCarousel();
+            }
+
+            xStart = null;
+            yStart = null;
+        }
+    });
+});
 </script>
     </script>
 </html>
