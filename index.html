@@ -1326,6 +1326,20 @@ img.unique-img {
         display: block !important;
         margin: 10px auto !important;
     }
+	@media (max-width: 768px) {
+    .use-cases .carousel-item {
+        width: calc(100% - 20px) !important; /* Full width minus padding */
+        margin: 10px 10px !important; /* Adjust margins for mobile */
+        padding: 10px !important; /* Adjust padding for mobile */
+    }
+
+    .left-arrow,
+    .right-arrow {
+        width: 30px; /* Adjust width for mobile */
+        height: 30px; /* Adjust height for mobile */
+        line-height: 30px; /* Centering text */
+        font-size: 20px; /* Adjust font size for mobile */
+    }
 }
 
 </style>
