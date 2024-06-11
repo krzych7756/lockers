@@ -1979,42 +1979,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-document.getElementById('contactLabel').addEventListener('click', toggleContactCard);
+   document.getElementById('contactLabel').addEventListener('click', toggleContactCard);
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var phoneNumber = document.getElementById('phoneNumber').value;
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var phoneNumber = document.getElementById('phoneNumber').value;
 
-    fetch('send_email.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'phoneNumber=' + encodeURIComponent(phoneNumber)
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert('Twoja prośba została wysłana.');
-        document.getElementById('contactCard').classList.remove('open');
-        document.getElementById('contactLabel').classList.remove('hidden'); // Show the label again
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
+            fetch('send_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'phoneNumber=' + encodeURIComponent(phoneNumber)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Twoja prośba została wysłana.');
+                document.getElementById('contactCard').classList.remove('open');
+                document.getElementById('contactLabel').classList.remove('hidden'); // Show the label again
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
 
-function toggleContactCard() {
-    var contactLabel = document.getElementById("contactLabel");
-    var contactCard = document.getElementById("contactCard");
+        function toggleContactCard() {
+            var contactLabel = document.getElementById("contactLabel");
+            var contactCard = document.getElementById("contactCard");
 
-    if (contactCard.classList.contains("open")) {
-        contactCard.classList.remove("open");
-        contactLabel.classList.remove("hidden"); // Show the label
-    } else {
-        contactCard.classList.add("open");
-        contactLabel.classList.add("hidden"); // Hide the label
-    }
-}
+            if (contactCard.classList.contains("open")) {
+                contactCard.classList.remove("open");
+                contactLabel.classList.remove("hidden"); // Show the label
+            } else {
+                contactCard.classList.add("open");
+                contactLabel.classList.add("hidden"); // Hide the label
+            }
+        }
 </script>
     </script>
 </html>
