@@ -864,6 +864,7 @@ img.unique-img {
         line-height: 1.6 !important;
         color: #1d3557 !important;
         background: #f8f9fa !important;
+        overflow-x: hidden !important; /* Zapobiega przesuwaniu w poziomie */
         margin: 0 !important;
     }
 
@@ -885,6 +886,11 @@ img.unique-img {
         text-align: center !important;
         flex-direction: column !important;
         justify-content: center !important;
+        background-size: cover !important;
+    }
+
+    .hero-content {
+        width: 90% !important;
     }
 
     .hero h1 {
@@ -928,11 +934,48 @@ img.unique-img {
     .stats-item {
         width: 90% !important;
         margin: 10px 0 !important;
+        max-height: 1000px !important; /* Umożliwia rozsuwanie się w dół */
+        transition: max-height 0.5s !important;
+    }
+
+    .value-item:hover {
+        max-height: 1000px !important;
+    }
+
+    .use-cases {
+        display: block !important;
+    }
+
+    .use-cases .carousel-container {
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .use-cases .carousel {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        padding-bottom: 20px !important;
     }
 
     .use-cases .carousel-item {
-        height: 70vh !important;
+        scroll-snap-align: start !important;
+        flex: none !important;
+        width: 100% !important;
         margin-right: 10px !important;
+        background: #ffffff !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        transition: background-color 0.5s, transform 0.3s, box-shadow 0.3s !important;
+        box-shadow: 0 4px 12px rgba(40, 1, 125, 0.2) !important;
+        color: #1d3557 !important;
+        position: relative !important;
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 70vh !important; /* Wysokość kart na 70% wysokości ekranu */
     }
 
     .left-arrow,
@@ -1000,6 +1043,17 @@ img.unique-img {
         padding: 10px !important;
         right: 5% !important;
     }
+
+    .contact-label {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+
+/* Global reset to prevent horizontal scrolling */
+html, body {
+    overflow-x: hidden !important;
 }
 
 </style>
