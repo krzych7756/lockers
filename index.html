@@ -444,20 +444,8 @@
     transition: right 0.3s ease-in-out;
 }
 
-.contact-label {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 200px;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1000; /* Ensure it stays on top */
-    border-radius: 8px 0 0 8px;
-    text-align: center;
-    transition: right 0.3s ease-in-out;
+.contact-label.hidden {
+    right: -200px; /* Move out of view */
 }
 
 .contact-card {
@@ -1677,7 +1665,6 @@ img.unique-img {
         </div>
     </section>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1701,7 +1688,6 @@ img.unique-img {
     <script src="script.js"></script>
 </body>
 </html>
-</body>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 <script>
@@ -1973,7 +1959,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     .then(data => {
         alert('Twoja prośba została wysłana.');
         document.getElementById('contactCard').classList.remove('open');
-        document.getElementById('contactLabel').style.right = '0'; // Show the label again
+        document.getElementById('contactLabel').classList.remove('hidden'); // Show the label again
     })
     .catch(error => {
         console.error('Error:', error);
@@ -1986,10 +1972,10 @@ function toggleContactCard() {
 
     if (contactCard.classList.contains("open")) {
         contactCard.classList.remove("open");
-        contactLabel.style.right = '0'; // Show the label
+        contactLabel.classList.remove("hidden"); // Show the label
     } else {
         contactCard.classList.add("open");
-        contactLabel.style.right = '-200px'; // Hide the label
+        contactLabel.classList.add("hidden"); // Hide the label
     }
 }
 </script>
