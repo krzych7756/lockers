@@ -1944,9 +1944,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-document.getElementById('contactLabel').addEventListener('click', function() {
-    document.getElementById('contactCard').classList.toggle('open');
-});
+document.getElementById('contactLabel').addEventListener('click', toggleContactCard);
 
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -1963,21 +1961,21 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     .then(data => {
         alert('Twoja prośba została wysłana.');
         document.getElementById('contactCard').classList.remove('open');
+        document.getElementById('contactLabel').style.right = '0'; // Show the label again
     })
     .catch(error => {
         console.error('Error:', error);
     });
 });
+
 function toggleContactCard() {
     var contactLabel = document.getElementById("contactLabel");
     var contactCard = document.getElementById("contactCard");
-    
+
     if (contactCard.classList.contains("open")) {
-        // Hide the contact card and show the label
         contactCard.classList.remove("open");
         contactLabel.style.right = '0'; // Show the label
     } else {
-        // Show the contact card and hide the label
         contactCard.classList.add("open");
         contactLabel.style.right = '-200px'; // Hide the label
     }
