@@ -1555,56 +1555,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 contactLabel.classList.add("hidden"); // Hide the label
             }
         }
-document.addEventListener('DOMContentLoaded', function() {
-    const carousels = document.querySelectorAll('.use-cases .carousel');
-
-    carousels.forEach(carousel => {
-        const items = carousel.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-
-        const updateCarousel = () => {
-            const width = carousel.offsetWidth;
-            carousel.style.transform = `translateX(${-currentIndex * width}px)`;
-        };
-
-        carousel.addEventListener('touchstart', handleTouchStart, false);
-        carousel.addEventListener('touchmove', handleTouchMove, false);
-
-        let xStart = null;
-        let yStart = null;
-
-        function handleTouchStart(event) {
-            const firstTouch = event.touches[0];
-            xStart = firstTouch.clientX;
-            yStart = firstTouch.clientY;
-        }
-
-        function handleTouchMove(event) {
-            if (!xStart || !yStart) {
-                return;
-            }
-
-            let xEnd = event.touches[0].clientX;
-            let yEnd = event.touches[0].clientY;
-
-            let xDiff = xStart - xEnd;
-            let yDiff = yStart - yEnd;
-
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                // swipe left or right
-                if (xDiff > 0) {
-                    currentIndex = (currentIndex + 1) % items.length;
-                } else {
-                    currentIndex = (currentIndex - 1 + items.length) % items.length;
-                }
-                updateCarousel();
-            }
-
-            xStart = null;
-            yStart = null;
-        }
-    });
-});
-</script>
     </script>
 </html>
