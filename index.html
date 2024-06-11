@@ -1175,33 +1175,57 @@ img.unique-img {
     }
 
     .hero {
-        background: url('https://gryc24.pl/res/files/hero-lockers-lp-mobile.svg') no-repeat center center/contain !important;
-        height: 800px !important;
-	width: 600px !important;
-    }
-
-    .hero h1 {
-        font-size: 1em !important;
-    }
-
-    .hero p {
-        font-size: 1em !important;
-    }
-
-    .hero a {
-        padding: 6px 16px !important;
-        margin-bottom: 10px !important;
-    }
+    background: url('https://gryc24.pl/res/files/lockers-herolp.svg') no-repeat center center/contain !important;
+    color: #fff !important;
+    height: 380px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    position: relative !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
+    margin: 0 auto; /* Center the container */
 }
 
-    .hero h1, .hero p {
-        font-size: 1em !important; 
-        margin: 10px 0 !important; 
-    }
+.hero::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
 
-    .hero a {
-        margin-bottom: 10px !important;
-    }
+.hero-content {
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.hero h1 {
+    font-size: 1.2em !important;
+    justify-content: center !important;
+    animation: fadeInDown 1s ease-out !important;
+    color: #fff !important;
+}
+
+.hero p {
+    font-size: 1.2em !important;
+    margin-bottom: 15px !important;
+    animation: fadeInUp 1s ease-out !important;
+}
+
+.hero a {
+    background: #e63946 !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    transition: background 0.3s
+}
 
     /* Section Padding for Mobile */
     .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
