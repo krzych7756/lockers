@@ -851,125 +851,154 @@ img.unique-img {
   display: block;
   transition-duration: .3s;
 }
-@media only screen and (max-width: 800px) {
-    body {
-        max-width: 100vw !important;
+@media only screen and (max-width: 768px) {
+    /* Global Styles */
+    * {
         margin: 0 !important;
         padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    body {
+        font-family: Arial, sans-serif !important;
+        line-height: 1.6 !important;
+        color: #1d3557 !important;
+        background: #f8f9fa !important;
+        margin: 0 !important;
+    }
+
+    header {
+        padding: 10px 20px;
+        justify-content: center;
+    }
+
+    header h1 {
+        font-size: 1.2em !important;
+    }
+
+    header nav {
+        display: none !important;
     }
 
     .hero {
-        height: auto !important;
-        display: block !important;
-    }
-
-    .hero-content {
-        width: 100% !important;
-    }
-
-    .hero h1, .hero p, .hero a {
-        font-size: 1.2em !important;
-        margin: 10px 0 !important;
-    }
-
-    .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
-        padding: 20px 10px !important;
-        margin: 10px 0 !important;
-    }
-
-    .values, .use-cases, .stats {
+        height: 70vh !important;
+        text-align: center !important;
         flex-direction: column !important;
+        justify-content: center !important;
     }
 
-    .value-item {
-        width: 100% !important;
+    .hero h1 {
+        font-size: 1.5em !important;
+    }
+
+    .hero p {
+        font-size: 1em !important;
+    }
+
+    .hero a {
+        padding: 5px 15px !important;
+        font-size: 0.9em !important;
+    }
+
+    .section,
+    .values,
+    .cta,
+    .contact-form,
+    .use-cases,
+    .testimonials,
+    .creator,
+    .product-images,
+    .stats,
+    footer {
+        padding: 20px 10px !important;
+        margin: 15px 0 !important;
+    }
+
+    .values,
+    .use-cases,
+    .testimonials,
+    .product-images,
+    .stats {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .value-item,
+    .stats-item {
+        width: 90% !important;
         margin: 10px 0 !important;
     }
 
     .use-cases .carousel-item {
-        width: 100% !important;
         height: 70vh !important;
-        margin: 10px 0 !important;
+        margin-right: 10px !important;
+    }
+
+    .left-arrow,
+    .right-arrow {
+        font-size: 20px !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        width: 90% !important;
+    }
+
+    .opinion-section {
+        flex-direction: column !important;
+        padding: 20px 10px !important;
+    }
+
+    .creator {
+        width: 90% !important;
+        height: auto !important;
+        margin-bottom: 20px !important;
+    }
+
+    .product-images img {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .creator img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .creator h3,
+    .creator span {
+        font-size: 1em !important;
+    }
+
+    footer {
+        padding: 15px !important;
+    }
+
+    .unique-heading,
+    .container-all-unique {
+        text-align: center;
     }
 
     .container-unique {
         width: 100% !important;
         margin: 10px 0 !important;
-    }
-
-    .unique-img, .product-images img, .carousel-item img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 30vh !important;
-    }
-
-    .testimonials .container-opinion-section {
-        flex-direction: column !important;
-    }
-
-    .creator {
-        width: 100% !important;
-        height: auto !important;
-        margin: 10px 0 !important;
-    }
-
-    .contact-form form, .contact-card, .opinion-section {
-        width: 100% !important;
-        margin: 10px 0 !important;
-    }
-
-    header, footer {
-        flex-direction: column !important;
-        align-items: center !important;
         padding: 10px !important;
     }
 
-    header nav a, .stats-item {
-        margin: 5px 0 !important;
-    }
-
-    header h1, footer {
-        text-align: center !important;
-    }
-
-    .quote, .creator-info, .container-all-unique, .contact-card-content {
-        width: 100% !important;
-        text-align: center !important;
-    }
-
-    .left-arrow, .right-arrow {
-        display: none !important;
-    }
-
-    .contact-label, .contact-card {
-        width: 100% !important;
-        right: 0 !important;
-        left: 0 !important;
-        top: auto !important;
-        bottom: 0 !important;
-        transform: translateY(0) !important;
-    }
-
-    .container {
-        flex-direction: column !important;
-    }
-
-    .feature-item, .iconsbig, .font-alt, .text-muted, .creator-wrapper {
-        width: 60% !important;
-	height: 60% !important;
-        margin: 10px 0 !important;
-    }
-
-    .cta a, .contact-form form button, .creator img, .product-images img, .stats-item h3, .stats-item h2, .stats-item p {
+    .title-unique,
+    .text-unique {
         font-size: 1em !important;
     }
 
-    .use-cases .carousel {
-        display: block !important;
-    }
-
-    .use-cases .carousel-item.expanded {
-        height: auto !important;
+    .contact-label,
+    .contact-card {
+        width: 90% !important;
+        padding: 10px !important;
+        right: 5% !important;
     }
 }
 
