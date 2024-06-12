@@ -1741,18 +1741,21 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-	function isMobile() {
+function isMobile() {
     return window.matchMedia("(max-width: 767px)").matches;
 }
 
 // Dodanie obsługi kliknięcia tylko na urządzeniach mobilnych
 if (isMobile()) {
     document.querySelectorAll('.values .value-item').forEach(item => {
-        item.addEventListener('click', function() {
-            if (this.classList.contains('expanded')) {
-                this.classList.remove('expanded');
-            } else {
-                this.classList.add('expanded');
+        item.addEventListener('click', function(e) {
+            // Ensure click is on the item itself, not its children
+            if (e.target === this) {
+                if (this.classList.contains('expanded')) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
             }
         });
     });
