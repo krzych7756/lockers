@@ -1741,36 +1741,35 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+document.addEventListener('DOMContentLoaded', function() {
+    if (isMobile()) {
+        const items = document.querySelectorAll('.values .value-item');
+
+        const collapseAllItems = () => {
+            items.forEach(item => item.classList.remove('expanded'));
+        };
+
+        items.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the click event from propagating to the document
+                
+                if (this.classList.contains('expanded')) {
+                    this.classList.remove('expanded'); // Collapse the clicked item if already expanded
+                } else {
+                    collapseAllItems(); // Collapse all items
+                    this.classList.add('expanded'); // Expand the clicked item
+                }
+            });
+        });
+
+        document.addEventListener('click', function() {
+            collapseAllItems(); // Collapse all items when clicking anywhere on the document
+        });
+    }
+});
+
 function isMobile() {
     return window.matchMedia("(max-width: 767px)").matches;
-}
-
-if (isMobile()) {
-    const items = document.querySelectorAll('.values .value-item');
-
-    // Function to collapse all items
-    const collapseAllItems = () => {
-        items.forEach(item => item.classList.remove('expanded'));
-    };
-
-    // Attach event listener to each item
-    items.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent click event from propagating to the document
-
-            if (this.classList.contains('expanded')) {
-                this.classList.remove('expanded'); // Collapse the clicked item if already expanded
-            } else {
-                collapseAllItems(); // Collapse all items
-                this.classList.add('expanded'); // Expand the clicked item
-            }
-        });
-    });
-
-    // Attach event listener to the document to collapse all items when clicking anywhere else
-    document.addEventListener('click', function() {
-        collapseAllItems(); // Collapse all items when clicking anywhere on the document
-    });
-}
-    </script>
+}    
+</script>
 </html>
