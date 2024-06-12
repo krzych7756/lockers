@@ -1751,8 +1751,12 @@ if (isMobile()) {
     items.forEach(item => {
         item.addEventListener('click', function(e) {
             e.stopPropagation(); // Prevents the click event from propagating to the document
-            items.forEach(i => i.classList.remove('expanded')); // Collapse all items
-            this.classList.add('expanded'); // Expand the clicked item
+            if (this.classList.contains('expanded')) {
+                this.classList.remove('expanded'); // Collapse the clicked item if already expanded
+            } else {
+                items.forEach(i => i.classList.remove('expanded')); // Collapse all items
+                this.classList.add('expanded'); // Expand the clicked item
+            }
         });
     });
 
