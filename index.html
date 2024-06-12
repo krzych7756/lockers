@@ -819,6 +819,14 @@ img.unique-img {
      .values .value-item.hover-reset {
         transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
     }
+
+      .values .value-item:hover {
+    transform: translateY(20%) !important;
+    }
+
+     .values .value-item.hover-reset {
+        transform: translateY(0) !important; /* Przywrócenie do stanu początkowego */
+    }
 	
     .value-item {
         width: 100% !important;
@@ -1733,17 +1741,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-	 function isMobile() {
-            return window.matchMedia("(max-width: 767px)").matches;
-        }
+	function isMobile() {
+    return window.matchMedia("(max-width: 767px)").matches;
+}
 
-        // Dodanie obsługi kliknięcia tylko na urządzeniach mobilnych
-        if (isMobile()) {
-            document.querySelectorAll('.values .value-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.add('hover-reset');
-                });
-            });
-        }
+// Dodanie obsługi kliknięcia tylko na urządzeniach mobilnych
+if (isMobile()) {
+    document.querySelectorAll('.values .value-item').forEach(item => {
+        item.addEventListener('click', function() {
+            if (this.classList.contains('hover-reset')) {
+                this.classList.remove('hover-reset');
+            } else {
+                this.classList.add('hover-reset');
+            }
+        });
+
+        // Dodanie obsługi dla osi Y
+        item.addEventListener('touchstart', function(e) {
+            e.preventDefault();  // Prevents the default scrolling behavior
+            this.classList.add('hover-reset-y');
+        });
+    });
+}
     </script>
 </html>
