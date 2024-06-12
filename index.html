@@ -1751,7 +1751,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (targetItem) {
                 const isExpanded = targetItem.classList.contains('expanded');
                 if (isExpanded) {
-                    targetItem.classList.remove('expanded'); // Collapse the clicked item if already expanded
+                    targetItem.classList.remove('expanded'); // Collapse the clicked item if it was already expanded
                 } else {
                     collapseAllItems(); // Collapse all items
                     targetItem.classList.add('expanded'); // Expand the clicked item
