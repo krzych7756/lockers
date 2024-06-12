@@ -1751,17 +1751,20 @@ if (isMobile()) {
     items.forEach(item => {
         item.addEventListener('click', function(e) {
             e.stopPropagation(); // Prevents the click event from propagating to the document
-            if (this.classList.contains('expanded')) {
-                this.classList.remove('expanded'); // Collapse the clicked item if already expanded
-            } else {
-                items.forEach(i => i.classList.remove('expanded')); // Collapse all items
-                this.classList.add('expanded'); // Expand the clicked item
+            
+            // Collapse all items
+            items.forEach(i => i.classList.remove('expanded'));
+            
+            // Expand the clicked item if it was not already expanded
+            if (!this.classList.contains('expanded')) {
+                this.classList.add('expanded');
             }
         });
     });
 
     document.addEventListener('click', function() {
-        items.forEach(item => item.classList.remove('expanded')); // Collapse all items when clicking anywhere on the document
+        // Collapse all items when clicking anywhere on the document
+        items.forEach(item => item.classList.remove('expanded'));
     });
 }
     </script>
