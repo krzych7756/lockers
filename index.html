@@ -761,7 +761,11 @@ img.unique-img {
         display: block !important;
 	background: url('https://gryc24.pl/res/files/hero-lp-mobile.png') no-repeat center center/contain 
     }
-   .hero a {
+  .hero a {
+    position: absolute;
+    top: 70vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
     background: #e63946 !important;
     color: #fff !important;
     padding: 8px 20px !important;
@@ -769,8 +773,8 @@ img.unique-img {
     border-radius: 5px !important;
     transition: background 0.3s, transform 0.3s !important;
     animation: fadeIn 1s ease-out !important;
-    margin-top: 20px; /* Odstęp od tekstu */
 }
+
     
     .hero-content {
 	display: flex
@@ -778,7 +782,11 @@ img.unique-img {
 	justify-content: center;
     }
 
-    .hero h1 {
+   .hero h1 {
+    position: absolute;
+    top: 50vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 2.5em !important;
     justify-content: center !important;
     animation: fadeInDown 1s ease-out !important;
@@ -786,6 +794,10 @@ img.unique-img {
 }
 
 .hero p {
+    position: absolute;
+    top: 60vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1.5em !important;
     margin-bottom: 15px !important;
     animation: fadeInUp 1s ease-out !important;
