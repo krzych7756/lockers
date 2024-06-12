@@ -849,7 +849,8 @@ img.unique-img {
     text-align: center;
     cursor: pointer;
     z-index: 1000;
-    transition: bottom 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Zmieniona właściwość animacji */
+    transform: translateY(0); /* Początkowe przesunięcie */
 }
 
 .contact-card {
@@ -859,45 +860,47 @@ img.unique-img {
     background-color: red;
     color: white;
     border-radius: 8px 8px 0 0;
-    transition: bottom 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Zmieniona właściwość animacji */
     z-index: 999;
     padding: 20px;
     text-align: center;
+    transform: translateY(calc(100% - 70px)); /* Przesunięcie na dół ekranu minus minimalna wysokość */
 }
-  .contact-card.open {
-    bottom: 0; /* Slide up */
-  }
 
-  .contact-card-content {
+.contact-card.open {
+    transform: translateY(0); /* Slide up */
+}
+
+.contact-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
 
-  .contact-card-content p {
+.contact-card-content p {
     margin-bottom: 10px;
-  }
+}
 
-  .contact-card-content input {
+.contact-card-content input {
     padding: 10px;
     margin-bottom: 10px;
     border: none;
     border-radius: 4px;
     width: 90%;
-  }
+}
 
-  .contact-card-content button {
+.contact-card-content button {
     padding: 10px 20px;
     background-color: white;
     color: red;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
 
-  .contact-card-content button:hover {
+.contact-card-content button:hover {
     background-color: #f1f1f1;
-  }
+}
 
     .container {
         flex-direction: column !important;
