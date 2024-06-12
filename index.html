@@ -1748,19 +1748,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const handleClick = (event) => {
             const clickedItem = event.currentTarget;
-            
-            // Toggle expanded class for the clicked item
-            clickedItem.classList.toggle('expanded');
-            
-            // Collapse all other expanded items
-            items.forEach(item => {
-                if (item !== clickedItem && item.classList.contains('expanded')) {
-                    item.classList.remove('expanded');
-                }
-            });
+
+            if (clickedItem.classList.contains('expanded')) {
+                // Jeśli kliknięty element jest rozwinięty, to go zwijamy
+                clickedItem.classList.remove('expanded');
+            } else {
+                // Jeśli kliknięty element nie jest rozwinięty, to najpierw zwijamy wszystkie inne
+                items.forEach(item => {
+                    if (item !== clickedItem && item.classList.contains('expanded')) {
+                        item.classList.remove('expanded');
+                    }
+                });
+                // Następnie rozwijamy kliknięty element
+                clickedItem.classList.add('expanded');
+            }
         };
 
-        // Add click event listener to each item
+        // Dodajemy listener click do każdego elementu .value-item
         items.forEach(item => {
             item.addEventListener('click', handleClick);
         });
