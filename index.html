@@ -1752,7 +1752,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         items.forEach(item => {
             item.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent the click event from propagating to the document
+                // Prevents the click event from propagating to the document
+                e.stopPropagation();
 
                 if (this.classList.contains('expanded')) {
                     this.classList.remove('expanded'); // Collapse the clicked item if already expanded
@@ -1768,5 +1769,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function isMobile() {
+    return window.matchMedia("(max-width: 767px)").matches;
+}
 </script>
 </html>
