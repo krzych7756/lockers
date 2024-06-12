@@ -1749,17 +1749,11 @@ document.addEventListener("DOMContentLoaded", () => {
 if (isMobile()) {
     document.querySelectorAll('.values .value-item').forEach(item => {
         item.addEventListener('click', function() {
-            if (this.classList.contains('hover-reset')) {
-                this.classList.remove('hover-reset');
+            if (this.classList.contains('expanded')) {
+                this.classList.remove('expanded');
             } else {
-                this.classList.add('hover-reset');
+                this.classList.add('expanded');
             }
-        });
-
-        // Dodanie obsługi dla osi Y
-        item.addEventListener('touchstart', function(e) {
-            e.preventDefault();  // Prevents the default scrolling behavior
-            this.classList.add('hover-reset-y');
         });
     });
 }
