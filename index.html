@@ -1746,6 +1746,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
 
+        const handleClick = () => {
+            items.forEach(item => {
+                if (item.classList.contains('expanded')) {
+                    item.classList.remove('expanded');
+                } else {
+                    item.classList.add('expanded');
+                }
+            });
+        };
+
+        document.addEventListener('click', handleClick);
+    }
+});
+
 function isMobile() {
     return window.matchMedia("(max-width: 767px)").matches;
 }
