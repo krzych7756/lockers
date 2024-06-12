@@ -815,6 +815,11 @@ img.unique-img {
     .values .value-item:hover {
     transform: translateX(-2%) !important;
     }
+
+     .values .value-item.hover-reset {
+        transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
+    }
+	
     .value-item {
         width: 100% !important;
         margin: 10px 0 !important;
@@ -1079,7 +1084,7 @@ img.unique-img {
 .gryc-section {
 padding: 10px;
 }
-
+	
 </style>
 <body>
     <header>
@@ -1726,6 +1731,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 contactCard.classList.add("open");
                 contactLabel.classList.add("hidden"); // Hide the label
             }
+        }
+
+	 function isMobile() {
+            return window.matchMedia("(max-width: 767px)").matches;
+        }
+
+        // Dodanie obsługi kliknięcia tylko na urządzeniach mobilnych
+        if (isMobile()) {
+            document.querySelectorAll('.values .value-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.add('hover-reset');
+                });
+            });
         }
     </script>
 </html>
