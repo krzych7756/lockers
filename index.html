@@ -1750,20 +1750,20 @@ document.addEventListener('DOMContentLoaded', function() {
             items.forEach(item => item.classList.remove('expanded'));
         };
 
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.values .value-item')) {
+                collapseAllItems(); // Collapse all items when clicking anywhere outside the items
+            }
+        });
+
         items.forEach(item => {
             item.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevents the click event from propagating to the document
-
                 const isExpanded = this.classList.contains('expanded');
                 collapseAllItems(); // Collapse all items
                 if (!isExpanded) {
                     this.classList.add('expanded'); // Expand the clicked item if it wasn't already expanded
                 }
             });
-        });
-
-        document.addEventListener('click', function() {
-            collapseAllItems(); // Collapse all items when clicking anywhere on the document
         });
     }
 });
