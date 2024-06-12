@@ -1748,22 +1748,20 @@ function isMobile() {
 if (isMobile()) {
     const items = document.querySelectorAll('.values .value-item');
 
-    document.addEventListener('click', function(e) {
-        let clickedItem = e.target.closest('.value-item');
-        
-        if (clickedItem) {
-            // If clicked item is expanded, collapse it
-            if (clickedItem.classList.contains('expanded')) {
-                clickedItem.classList.remove('expanded');
+    items.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevents the click event from propagating to the document
+            if (this.classList.contains('expanded')) {
+                this.classList.remove('expanded'); // Collapse the clicked item if already expanded
             } else {
-                // Otherwise, collapse all items and then expand the clicked one
-                items.forEach(item => item.classList.remove('expanded'));
-                clickedItem.classList.add('expanded');
+                items.forEach(i => i.classList.remove('expanded')); // Collapse all items
+                this.classList.add('expanded'); // Expand the clicked item
             }
-        } else {
-            // If click happened outside any value-item, collapse all items
-            items.forEach(item => item.classList.remove('expanded'));
-        }
+        });
+    });
+
+    document.addEventListener('click', function() {
+        items.forEach(item => item.classList.remove('expanded')); // Collapse all items when clicking anywhere on the document
     });
 }
     </script>
