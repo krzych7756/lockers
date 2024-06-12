@@ -1769,6 +1769,15 @@ if (isMobile()) {
     document.addEventListener('click', function() {
         collapseAllItems(); // Collapse all items when clicking anywhere on the document
     });
+
+    // Ensure clicking on an item also allows the document click event to fire
+    items.forEach(item => {
+        item.addEventListener('click', function() {
+            setTimeout(() => {
+                document.addEventListener('click', collapseAllItems, { once: true });
+            }, 0);
+        });
+    });
 }
     </script>
 </html>
