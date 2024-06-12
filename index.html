@@ -808,30 +808,31 @@ img.unique-img {
         margin: 10px 0 !important;
     }
 
-    .values, .use-cases, .stats {
-        flex-direction: column !important;
-    }
+   .values, .use-cases, .stats {
+    flex-direction: column !important;
+}
 
-    .values .value-item:hover {
+.values .value-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+    transform: translateY(0) !important;
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    overflow: hidden;
+    max-height: 50px; /* Wysokość zwinietego kafelka */
+}
+
+.values .value-item.expanded {
+    transform: translateY(0) !important; /* Przesunięcie w dół przy rozwinięciu */
+    max-height: 200px; /* Wysokość rozwiniętego kafelka */
+}
+
+.values .value-item:hover {
     transform: translateX(-2%) !important;
-    }
+}
 
-     .values .value-item.hover-reset {
-        transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
-    }
-
-      .values .value-item:hover {
-    transform: translateY(20%) !important;
-    }
-
-     .values .value-item.hover-reset {
-        transform: translateY(0) !important; /* Przywrócenie do stanu początkowego */
-    }
-	
-    .value-item {
-        width: 100% !important;
-        margin: 10px 0 !important;
-    }
+.values .value-item.hover-reset {
+    transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
+}
 
     .container-unique {
         width: 100% !important;
@@ -1752,7 +1753,7 @@ document.addEventListener('DOMContentLoaded', function() {
         items.forEach(item => {
             item.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent the click event from propagating to the document
-                
+
                 if (this.classList.contains('expanded')) {
                     this.classList.remove('expanded'); // Collapse the clicked item if already expanded
                 } else {
@@ -1767,9 +1768,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-function isMobile() {
-    return window.matchMedia("(max-width: 767px)").matches;
-}    
 </script>
 </html>
