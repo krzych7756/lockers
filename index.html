@@ -988,20 +988,21 @@ img.unique-img {
 
 .use-cases .carousel {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto; /* Zmieniono z 'scroll' na 'auto' */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     height: 80vh; /* Skaluj wysokość do wysokości ekranu */
-    width: 95vw; /* Skaluj szerokość do szerokości ekranu */
+    width: 100vw; /* Skaluj szerokość do szerokości ekranu */
     padding: 10px;
     flex-wrap: nowrap;
+    scroll-behavior: smooth; /* Dodano płynne przewijanie */
 }
 
 .use-cases .carousel-item {
     scroll-snap-align: center; /* Zmieniono na 'center', aby elementy były wyśrodkowane */
     flex: none;
-    width: 80%; /* Zmieniono szerokość na większą wartość */
-    margin: 0 10px; /* Dostosowano margines */
+    width: 90%; /* Zmieniono szerokość na większą wartość */
+    margin: 0 5%; /* Dodano marginesy po bokach */
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -1061,7 +1062,7 @@ img.unique-img {
     color: #1d3557;
     text-align: center;
     margin: 10px 0;
-    width: 70vw; /* Skaluj szerokość do szerokości ekranu */
+    width: 100%; /* Skaluj szerokość do szerokości ekranu */
 }
 
 .use-cases .carousel-item p {
