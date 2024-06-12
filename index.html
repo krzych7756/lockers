@@ -875,17 +875,20 @@ img.unique-img {
         background-color: #f8f9fa !important;
     }
 
-     .container.px-5 {
-    padding: 20px !important;
-    min-height: 500px !important;
-    padding: 10px !important;
-     }
+    .container.px-5 {
+        padding: 10px !important;
+        min-height: auto !important; /* Adjust min-height if necessary */
+        width: 100% !important;
+        box-sizing: border-box !important; /* Ensure padding is included in width */
+    }
 
-    .row gx-5{
- padding: 20px !important;
-    min-height: 500px !important;
-    padding: 10px !important;
-    }    
+    .row.gx-5 {
+        padding: 10px !important;
+        min-height: auto !important; /* Adjust min-height if necessary */
+        width: 100% !important;
+        box-sizing: border-box !important; /* Ensure padding is included in width */
+        margin: 0 !important; /* Remove margin that might cause overflow */
+    }
 
     /* Nowa stylizacja dla karuzeli */
     .carousel {
