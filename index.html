@@ -1750,7 +1750,7 @@ if (isMobile()) {
 
     items.forEach(item => {
         item.addEventListener('click', function(e) {
-            // No e.stopPropagation() here
+            e.stopPropagation(); // Prevents the click event from propagating to the document
             if (this.classList.contains('expanded')) {
                 this.classList.remove('expanded'); // Collapse the clicked item if already expanded
             } else {
@@ -1761,7 +1761,6 @@ if (isMobile()) {
     });
 
     document.addEventListener('click', function(e) {
-        // Check if the click happened outside any value-item
         const clickedInsideItem = e.target.closest('.value-item');
         if (!clickedInsideItem) {
             items.forEach(item => item.classList.remove('expanded')); // Collapse all items when clicking anywhere outside the value-items
