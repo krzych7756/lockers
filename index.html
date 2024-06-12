@@ -986,10 +986,9 @@ img.unique-img {
         margin: 0 !important; /* Remove margin that might cause overflow */
     }
 
-/* Karuzela */
 .use-cases .carousel {
     display: flex;
-    overflow-x: auto; /* Zmień na auto, aby wspierać przesuwanie ręczne */
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     height: 80vh; /* Skaluj wysokość do wysokości ekranu */
@@ -1002,11 +1001,10 @@ img.unique-img {
 
 /* Elementy karuzeli */
 .use-cases .carousel-item {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     flex: none;
-    width: 80%; /* Zmniejsz szerokość kart do 80%, aby lepiej mieściły się na ekranie */
-    max-width: 600px; /* Ogranicz maksymalną szerokość kart */
-    margin: 0 10px; /* Zapewnia centrowanie karty */
+    width: 100vw; /* Zapewnia, że każda karta zajmuje całą szerokość ekranu */
+    margin: 0 10px; /* Dodaje odstęp między kartami */
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -1092,6 +1090,11 @@ img.unique-img {
 /* Elementy rozszerzone */
 .use-cases .carousel-item.expanded {
     height: auto;
+}
+
+/* Usunięcie efektu przesuwania strony na boki */
+body {
+    overflow-x: hidden; /* Zablokuj przewijanie w poziomie */
 }
 
 /* Usunięcie efektu przesuwania strony na boki */
