@@ -1746,14 +1746,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
 
-        const collapseAllItems = () => {
-            items.forEach(item => item.classList.remove('expanded'));
-        };
-
         const handleClick = (e) => {
             const targetItem = e.target.closest('.values .value-item');
             if (targetItem) {
-                e.stopPropagation(); // Prevents the click event from propagating to the document
                 const isExpanded = targetItem.classList.contains('expanded');
                 collapseAllItems(); // Collapse all items
                 if (!isExpanded) {
@@ -1764,13 +1759,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        document.addEventListener('click', handleClick);
+        const collapseAllItems = () => {
+            items.forEach(item => item.classList.remove('expanded'));
+        };
 
-        items.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevents the click event from propagating to the document
-            });
-        });
+        document.addEventListener('click', handleClick);
     }
 });
 
