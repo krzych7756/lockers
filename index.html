@@ -1747,7 +1747,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const items = document.querySelectorAll('.values .value-item');
 
         const handleClick = () => {
-            items.forEach(item => item.classList.toggle('expanded'));
+            items.forEach(item => {
+                if (item.classList.contains('expanded')) {
+                    item.classList.remove('expanded');
+                } else {
+                    item.classList.add('expanded');
+                }
+            });
         };
 
         document.addEventListener('click', handleClick);
