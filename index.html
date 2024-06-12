@@ -839,7 +839,7 @@ img.unique-img {
         text-align: center !important;
     }
 
-   .contact-label {
+  .contact-label {
     position: fixed;
     left: 0;
     width: 100%;
@@ -848,8 +848,9 @@ img.unique-img {
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out; /* Zmieniona właściwość animacji */
+    z-index: 999; /* Zmienione z 1000, aby contact label był na wierzchu */
+    bottom: 0; /* Umieszczamy contact label na dole ekranu */
+    transition: transform 0.3s ease-in-out; /* Dodana właściwość animacji */
     transform: translateY(0); /* Początkowe przesunięcie */
 }
 
@@ -860,11 +861,12 @@ img.unique-img {
     background-color: red;
     color: white;
     border-radius: 8px 8px 0 0;
-    transition: transform 0.3s ease-in-out; /* Zmieniona właściwość animacji */
-    z-index: 999;
+    transition: transform 0.3s ease-in-out; /* Dodana właściwość animacji */
+    z-index: 998; /* Zmienione z 999, aby contact card był pod contact label */
     padding: 20px;
     text-align: center;
-    transform: translateY(calc(100% - 70px)); /* Przesunięcie na dół ekranu minus minimalna wysokość */
+    bottom: 0; /* Umieszczamy contact card na dole ekranu */
+    transform: translateY(100%); /* Początkowe przesunięcie */
 }
 
 .contact-card.open {
@@ -901,6 +903,7 @@ img.unique-img {
 .contact-card-content button:hover {
     background-color: #f1f1f1;
 }
+
 
     .container {
         flex-direction: column !important;
