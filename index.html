@@ -774,20 +774,27 @@ img.unique-img {
     animation: fadeIn 1s ease-out !important;
     margin-bottom: 15px !important;
 }
-
-    }
-	    
+    
     .hero-content {
 	display: flex
         width: 100% !important;
 	justify-content: center;
     }
 
-    .hero h1, .hero p, .hero a {
-        font-size: 1.2em !important;
-        margin: 10px 0 !important;
-	display: flex
-	justify-content: center;
+    .hero h1 {  
+    position: absolute;
+    bottom: -280px; /* Ustawienie odstępu od dołu ekranu */
+     font-size: 2.5em !important;
+     justify-content: center !important;
+     animation: fadeInDown 1s ease-out !important;
+     color: #fff !important;
+     }
+    .hero p {
+     position: absolute;
+    bottom: -300px; /* Ustawienie odstępu od dołu ekranu */
+    font-size: 1.5em !important;
+    margin-bottom: 15px !important;
+    animation: fadeInUp 1s ease-out !important;
     }
 
     .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
