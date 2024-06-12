@@ -1752,14 +1752,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         items.forEach(item => {
             item.addEventListener('click', function(e) {
-                // Prevents the click event from propagating to the document
-                e.stopPropagation();
+                e.stopPropagation(); // Prevents the click event from propagating to the document
 
-                if (this.classList.contains('expanded')) {
-                    this.classList.remove('expanded'); // Collapse the clicked item if already expanded
-                } else {
-                    collapseAllItems(); // Collapse all items
-                    this.classList.add('expanded'); // Expand the clicked item
+                const isExpanded = this.classList.contains('expanded');
+                collapseAllItems(); // Collapse all items
+                if (!isExpanded) {
+                    this.classList.add('expanded'); // Expand the clicked item if it wasn't already expanded
                 }
             });
         });
