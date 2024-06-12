@@ -8,6 +8,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 <style>
         * {
@@ -1746,27 +1747,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
 
-        const handleClick = (event) => {
-            const clickedItem = event.currentTarget;
+        const hammer = new Hammer(document);
 
-            if (clickedItem.classList.contains('expanded')) {
-                // Jeśli kliknięty element jest rozwinięty, to go zwijamy
+        hammer.on('tap', function(event) {
+            const clickedItem = event.target.closest('.value-item');
+            if (!clickedItem) return;
+
+            const expanded = clickedItem.classList.contains('expanded');
+
+            // Toggle expanded state for the clicked item
+            if (expanded) {
                 clickedItem.classList.remove('expanded');
             } else {
-                // Jeśli kliknięty element nie jest rozwinięty, to najpierw zwijamy wszystkie inne
+                // Collapse all other expanded items
                 items.forEach(item => {
                     if (item !== clickedItem && item.classList.contains('expanded')) {
                         item.classList.remove('expanded');
                     }
                 });
-                // Następnie rozwijamy kliknięty element
+                // Expand the clicked item
                 clickedItem.classList.add('expanded');
             }
-        };
-
-        // Dodajemy listener click do każdego elementu .value-item
-        items.forEach(item => {
-            item.addEventListener('click', handleClick);
         });
     }
 });
