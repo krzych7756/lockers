@@ -992,11 +992,12 @@ img.unique-img {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     height: 80vh; /* Skaluj wysokość do wysokości ekranu */
-    width: 100vw; /* Skaluj szerokość do szerokości ekranu */
+    width: 90vw; /* Skaluj szerokość do szerokości ekranu */
     padding: 10px;
     flex-wrap: nowrap;
     scroll-behavior: smooth; /* Dodaj płynne przewijanie */
     box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
+    scroll-snap-align: center;
 }
 
 /* Elementy karuzeli */
@@ -1096,13 +1097,6 @@ img.unique-img {
 body {
     overflow-x: hidden; /* Zablokuj przewijanie w poziomie */
 }
-
-/* Usunięcie efektu przesuwania strony na boki */
-body {
-    overflow-x: hidden; /* Zablokuj przewijanie w poziomie */
-}
-
-
 
 .gryc-section {
 padding: 10px;
@@ -1785,9 +1779,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function isMobile() {
-    return window.matchMedia("(max-width: 767px)").matches;
-}
 document.addEventListener("DOMContentLoaded", function() {
   const carousel = document.getElementById("carousel");
   let isDown = false;
@@ -1795,12 +1786,11 @@ document.addEventListener("DOMContentLoaded", function() {
   let scrollLeft;
 
   // Duplikujemy elementy karuzeli, aby uzyskać efekt zapętlenia
-  const items = carousel.children;
-  const cloneFirst = items[0].cloneNode(true);
-  const cloneLast = items[items.length - 1].cloneNode(true);
-
-  carousel.insertBefore(cloneLast, items[0]);
-  carousel.appendChild(cloneFirst);
+  const items = Array.from(carousel.children);
+  items.forEach(item => {
+    const clone = item.cloneNode(true);
+    carousel.appendChild(clone);
+  });
 
   // Event listeners do przesuwania karuzeli
   carousel.addEventListener("mousedown", (e) => {
@@ -1825,19 +1815,34 @@ document.addEventListener("DOMContentLoaded", function() {
     carousel.scrollLeft = scrollLeft - walk;
   });
 
-  // Ustawienie scroll snap
+  // Zapętlanie karuzeli
   carousel.addEventListener("scroll", () => {
-    const items = carousel.children;
-    const firstItem = items[0];
-    const lastItem = items[items.length - 1];
-
-    if (carousel.scrollLeft === 0) {
-      carousel.scrollLeft = lastItem.offsetLeft;
-    } else if (carousel.scrollLeft === lastItem.offsetLeft) {
-      carousel.scrollLeft = firstItem.offsetLeft;
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    if (carousel.scrollLeft >= maxScrollLeft) {
+      carousel.scrollLeft = 0;
+    } else if (carousel.scrollLeft <= 0) {
+      carousel.scrollLeft = maxScrollLeft;
     }
   });
+
+  // Dodanie obsługi przewijania dla zapętlania
+  let timeoutId;
+  const debounce = (func, delay) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  };
+
+  carousel.addEventListener("scroll", () => {
+    debounce(() => {
+      const scrollWidth = carousel.scrollWidth;
+      const clientWidth = carousel.clientWidth;
+      const scrollLeft = carousel.scrollLeft;
+
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        carousel.scrollLeft = 0;
+      }
+    }, 100);
+  });
 });
-</script>
 </script>
 </html>
