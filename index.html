@@ -1746,23 +1746,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
 
-        const handleClick = (e) => {
-            const targetItem = e.target.closest('.values .value-item');
-            if (targetItem) {
-                const isExpanded = targetItem.classList.contains('expanded');
-                if (isExpanded) {
-                    targetItem.classList.remove('expanded'); // Collapse the clicked item if it was already expanded
-                } else {
-                    collapseAllItems(); // Collapse all items
-                    targetItem.classList.add('expanded'); // Expand the clicked item
-                }
-            } else {
-                collapseAllItems(); // Collapse all items when clicking anywhere outside the items
-            }
-        };
-
-        const collapseAllItems = () => {
-            items.forEach(item => item.classList.remove('expanded'));
+        const handleClick = () => {
+            items.forEach(item => item.classList.toggle('expanded'));
         };
 
         document.addEventListener('click', handleClick);
