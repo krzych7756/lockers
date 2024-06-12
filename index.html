@@ -839,9 +839,9 @@ img.unique-img {
         text-align: center !important;
     }
 
-    .contact-label {
+   .contact-label {
     position: fixed;
-    bottom: 0;
+    bottom: -90%; /* 90% poniżej dolnej krawędzi ekranu */
     left: 0;
     width: 100%;
     background-color: red;
@@ -851,11 +851,11 @@ img.unique-img {
     cursor: pointer;
     z-index: 1000;
     transition: bottom 0.3s ease-in-out;
-  }
+}
 
-  .contact-card {
+.contact-card {
     position: fixed;
-    bottom: 500px; /* Hidden position */
+    bottom: -90%; /* 90% poniżej dolnej krawędzi ekranu */
     left: 0;
     width: 100%;
     background-color: red;
@@ -865,7 +865,7 @@ img.unique-img {
     z-index: 999;
     padding: 20px;
     text-align: center;
-  }
+}
 
   .contact-card.open {
     bottom: 0; /* Slide up */
