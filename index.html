@@ -1746,17 +1746,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
 
-        const handleClick = () => {
+        const handleClick = (event) => {
+            const clickedItem = event.currentTarget;
+            
+            // Toggle expanded class for the clicked item
+            clickedItem.classList.toggle('expanded');
+            
+            // Collapse all other expanded items
             items.forEach(item => {
-                if (item.classList.contains('expanded')) {
+                if (item !== clickedItem && item.classList.contains('expanded')) {
                     item.classList.remove('expanded');
-                } else {
-                    item.classList.add('expanded');
                 }
             });
         };
 
-        document.addEventListener('click', handleClick);
+        // Add click event listener to each item
+        items.forEach(item => {
+            item.addEventListener('click', handleClick);
+        });
     }
 });
 
