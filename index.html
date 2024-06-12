@@ -986,9 +986,10 @@ img.unique-img {
         margin: 0 !important; /* Remove margin that might cause overflow */
     }
 
+/* Karuzela */
 .use-cases .carousel {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto; /* Zmień na auto, aby wspierać przesuwanie ręczne */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     height: 80vh; /* Skaluj wysokość do wysokości ekranu */
@@ -1003,9 +1004,9 @@ img.unique-img {
 .use-cases .carousel-item {
     scroll-snap-align: start;
     flex: none;
-    width: 30%; /* Zmniejsz szerokość kart do 90%, aby lepiej mieściły się na ekranie */
-    max-width: 550px; /* Ogranicz maksymalną szerokość kart */
-    margin: 0 5% 20px 5%; /* Wycentruj karty i zachowaj odstępy */
+    width: 80%; /* Zmniejsz szerokość kart do 80%, aby lepiej mieściły się na ekranie */
+    max-width: 600px; /* Ogranicz maksymalną szerokość kart */
+    margin: 0 10px; /* Zapewnia centrowanie karty */
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -1018,7 +1019,7 @@ img.unique-img {
     justify-content: space-between;
     animation: float 3s infinite ease-in-out;
     animation-play-state: running;
-    gap: 1px;
+    gap: 5px;
     box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
 }
 
@@ -1784,5 +1785,56 @@ document.addEventListener('DOMContentLoaded', function() {
 function isMobile() {
     return window.matchMedia("(max-width: 767px)").matches;
 }
+document.addEventListener("DOMContentLoaded", function() {
+  const carousel = document.getElementById("carousel");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // Duplikujemy elementy karuzeli, aby uzyskać efekt zapętlenia
+  const items = carousel.children;
+  const cloneFirst = items[0].cloneNode(true);
+  const cloneLast = items[items.length - 1].cloneNode(true);
+
+  carousel.insertBefore(cloneLast, items[0]);
+  carousel.appendChild(cloneFirst);
+
+  // Event listeners do przesuwania karuzeli
+  carousel.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  carousel.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  carousel.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 3; // Prędkość przesuwania
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // Ustawienie scroll snap
+  carousel.addEventListener("scroll", () => {
+    const items = carousel.children;
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+
+    if (carousel.scrollLeft === 0) {
+      carousel.scrollLeft = lastItem.offsetLeft;
+    } else if (carousel.scrollLeft === lastItem.offsetLeft) {
+      carousel.scrollLeft = firstItem.offsetLeft;
+    }
+  });
+});
+</script>
 </script>
 </html>
