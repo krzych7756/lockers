@@ -143,116 +143,129 @@
 .use-cases {
     padding: 10px !important;
 }
- section.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin: 130px auto;
-  max-width: 1300px;
-  width: 100%;
-}
+section.card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 130px auto;
+      max-width: 1300px;
+      width: 100%;
+    }
 
-section.card {
-  position: relative;
-  width: 100%;
-  max-width: 1300px; /* 3 times the original max-width of 350px */
-  height: auto;
-  background-color: #474dc3;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin: 20px auto;
-  flex-direction: column;
-}
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.card img {
-  width: 100%;
-  max-width: 600px; /* 3 times the original max-width of 200px */
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    section.card {
+      position: relative;
+      width: 100%;
+      max-width: 1300px;
+      height: auto;
+      background-color: #474dc3;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1000px;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin: 20px auto;
+      flex-direction: column;
+    }
 
-.card svg {
-  fill: #333;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border-radius: 3px;
-}
+    .card img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px #000000;
-  background-color: rgba(25, 46, 68, 0.7);
-  color: #ffffff;
-}
+    .card svg {
+      fill: #333;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 3px;
+    }
 
-.card__content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 60px; /* 3 times the original padding of 20px */
-  box-sizing: border-box;
-  background-color: rgba(25, 46, 68, 0.7);
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  overflow: hidden;
-}
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px #000000;
+      background-color: rgba(25, 46, 68, 0.7);
+      color: #ffffff;
+    }
 
-.card:hover .card__content,
-.card.card--active .card__content {
-  transform: rotateX(0deg);
-}
+    .card__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px;
+      box-sizing: border-box;
+      background-color: rgba(25, 46, 68, 0.7);
+      transform: rotateX(-90deg);
+      transform-origin: bottom;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
 
-.card__title {
-    font-size: 20px;
-    color: #ffffff;
-    font-weight: 700;
-    white-space: nowrap;
-    text-align: left; /* Tekst jest wyrównany do lewej strony */
-}
-.card:hover svg {
-  scale: 0;
-}
+    .card:hover .card__content,
+    .card.card--active .card__content {
+      transform: rotateX(0deg);
+    }
 
-.card__description {
-  margin: 0px -30px 0px;
-  font-size: 12px; /* 3 times the original font-size of 14px */
-  color: #ffffff;
-  line-height: 1.4;
-  word-wrap: break-word;
-  white-space: normal;
-}
+    .card__title {
+      font-size: 20px;
+      color: #ffffff;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
 
-.toggle-animation {
-  background-color: #ffffff;
-  border: 2px solid #474dc3;
-  border-radius: 50%;
-  color: #474dc3;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px 20px;
-  margin-top: 20px;
-  transition: background-color 0.3s, color 0.3s;
-}
+    .card:hover svg {
+      scale: 0;
+    }
 
-.toggle-animation:hover {
-  background-color: #474dc3;
-  color: #ffffff;
-}
+    .card__description {
+      margin: 0px -30px 0px;
+      font-size: 12px;
+      color: #ffffff;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: normal;
+    }
 
-.toggle-animation.active {
-  background-color: #ff0000;
-  color: #ffffff;
-}
+    .toggle-animation {
+      background-color: #ffffff;
+      border: 2px solid #474dc3;
+      border-radius: 50%;
+      color: #474dc3;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 10px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-animation:hover {
+      background-color: #474dc3;
+      color: #ffffff;
+    }
+
+    .toggle-animation.active {
+      background-color: #ff0000;
+      color: #ffffff;
+    }
+
 
 
 .cta a, .contact-form form button {
@@ -1211,38 +1224,44 @@ padding: 10px;
             <a href="#cta">Zobacz opinie</a>
         </div>
     </section>
-    <section class="card-container">
-  <div class="card">
-    <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
-    <div class="card__content">
-      <p class="card__title">Prostota i wygoda</p>
-      <p class="card__description">
-        Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
-      </p>
+     <section class="card-container">
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
+        <div class="card__content">
+          <p class="card__title">Prostota i wygoda</p>
+          <p class="card__description">
+            Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
+          </p>
+        </div>
+      </div>
+      <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
     </div>
-    <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
-  </div>
-  <div class="card">
-    <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
-    <div class="card__content">
-      <p class="card__title">Bezpieczeństwo</p>
-      <p class="card__description">
-        Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
-      </p>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
+        <div class="card__content">
+          <p class="card__title">Bezpieczeństwo</p>
+          <p class="card__description">
+            Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
+          </p>
+        </div>
+      </div>
+      <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
     </div>
-    <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
-  </div>
-  <div class="card">
-    <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
-    <div class="card__content">
-      <p class="card__title">Skalowalność</p>
-      <p class="card__description">
-        Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
-      </p>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
+        <div class="card__content">
+          <p class="card__title">Skalowalność</p>
+          <p class="card__description">
+            Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
+          </p>
+        </div>
+      </div>
+      <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
     </div>
-    <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
-  </div>
-</section>
+  </section>
 	
 	<br></br>
 	
@@ -1941,25 +1960,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 100);
   });
 });
-document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
+ document.querySelectorAll('.toggle-animation').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.card-wrapper').querySelector('.card');
+        const content = card.querySelector('.card__content');
+        
         card.classList.toggle('card--active');
+        button.classList.toggle('active');
+
+        if (card.classList.contains('card--active')) {
+          content.style.transform = 'rotateX(0deg)';
+        } else {
+          content.style.transform = 'rotateX(-90deg)';
+        }
       });
     });
-document.querySelectorAll('.toggle-animation').forEach(button => {
-  button.addEventListener('click', () => {
-    const card = button.closest('.card');
-    const content = card.querySelector('.card__content');
-    
-    card.classList.toggle('card--active');
-    button.classList.toggle('active');
-
-    if (card.classList.contains('card--active')) {
-      content.style.transform = 'rotateX(0deg)';
-    } else {
-      content.style.transform = 'rotateX(-90deg)';
-    }
-  });
-});
 </script>
 </html>
