@@ -231,6 +231,28 @@ section.card {
   white-space: normal;
 }
 
+.toggle-animation {
+  background-color: #ffffff;
+  border: 2px solid #474dc3;
+  border-radius: 50%;
+  color: #474dc3;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-animation:hover {
+  background-color: #474dc3;
+  color: #ffffff;
+}
+
+.toggle-animation.active {
+  background-color: #ff0000;
+  color: #ffffff;
+}
 
 
 .cta a, .contact-form form button {
@@ -1189,35 +1211,38 @@ padding: 10px;
             <a href="#cta">Zobacz opinie</a>
         </div>
     </section>
-     <section class="card-container">
-    <div class="card">
-      <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
-      <div class="card__content">
-        <p class="card__title">Prostota i wygoda</p>
-        <p class="card__description">
-          Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
-        </p>
-      </div>
+    <section class="card-container">
+  <div class="card">
+    <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
+    <div class="card__content">
+      <p class="card__title">Prostota i wygoda</p>
+      <p class="card__description">
+        Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
+      </p>
     </div>
-    <div class="card">
-      <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
-      <div class="card__content">
-        <p class="card__title">Bezpieczeństwo</p>
-        <p class="card__description">
-          Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
-        </p>
-      </div>
+    <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
+  </div>
+  <div class="card">
+    <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
+    <div class="card__content">
+      <p class="card__title">Bezpieczeństwo</p>
+      <p class="card__description">
+        Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
+      </p>
     </div>
-    <div class="card">
-      <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
-      <div class="card__content">
-        <p class="card__title">Skalowalność</p>
-        <p class="card__description">
-          Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
-        </p>
-      </div>
+    <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
+  </div>
+  <div class="card">
+    <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
+    <div class="card__content">
+      <p class="card__title">Skalowalność</p>
+      <p class="card__description">
+        Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
+      </p>
     </div>
-  </section>
+    <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
+  </div>
+</section>
 	
 	<br></br>
 	
@@ -1921,5 +1946,20 @@ document.querySelectorAll('.card').forEach(card => {
         card.classList.toggle('card--active');
       });
     });
+document.querySelectorAll('.toggle-animation').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.card');
+    const content = card.querySelector('.card__content');
+    
+    card.classList.toggle('card--active');
+    button.classList.toggle('active');
+
+    if (card.classList.contains('card--active')) {
+      content.style.transform = 'rotateX(0deg)';
+    } else {
+      content.style.transform = 'rotateX(-90deg)';
+    }
+  });
+});
 </script>
 </html>
