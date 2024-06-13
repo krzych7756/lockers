@@ -122,7 +122,6 @@
             box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
             color: #fff;
             transform: translateY(-7px);
-
         }
         @keyframes fadeInDown {
             from { opacity: 0 !important; transform: translateY(-50px) !important; }
@@ -158,119 +157,131 @@
 .use-cases {
     padding: 10px !important;
 }
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.card__title {
-    font-size: 20px;
-    color: #ffffff;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 10px; /* Adjusts the spacing between the title and the card */
-}
-
-.card-container .card {
-    position: relative;
-    width: 100%;
-    max-width: 1300px;
-    height: auto;
-    background-color: #474dc3;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    perspective: 1000px;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin: 20px auto;
-    flex-direction: column;
-}
-
-.card img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card svg {
-    fill: #333;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border-radius: 3px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px #000000;
-    background-color: rgba(25, 46, 68, 0.7);
-    color: #ffffff;
-}
-
-.card__content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 60px;
-    box-sizing: border-box;
-    background-color: rgba(25, 46, 68, 0.7);
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-}
-
-.card:hover .card__content,
-.card.card--active .card__content {
-    transform: rotateX(0deg);
-}
-
-.card__description {
-    margin: 0px -30px 0px;
-    font-size: 12px;
-    color: #ffffff;
-    line-height: 1.4;
-    word-wrap: break-word;
-    white-space: normal;
-}
-
-.toggle-animation {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    margin-top: 20px !important;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-}
-
-.toggle-animation:hover {
-    background-color: #e63946;
-    box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-}
-
-.toggle-animation.active {
-    transform: translateY(-1px);
-}
-
+section.card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 130px auto;
+      max-width: 1300px;
+      width: 100%;
+    }
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    section.card {
+      position: relative;
+      width: 100%;
+      max-width: 1300px;
+      height: auto;
+      background-color: #474dc3;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1000px;
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin: 20px auto;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .card svg {
+      fill: #333;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 3px;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px #000000;
+      background-color: rgba(25, 46, 68, 0.7);
+      color: #ffffff;
+    }
+	.outer-container {
+    background-image: url('https://gryc24.pl/res/files/tlo-kontenera-lp-lockers.png') !important;
+    background-size: cover !important; /* ensures the background covers the entire container */
+    background-repeat: no-repeat !important; /* prevents the background from repeating */
+    background-position: center !important; /* centers the background image */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px !important;
+    border-radius: 10px !important;
+    padding: 1px !important;
+    margin: 50px auto !important;
+    max-width: 1400px !important;
+     }
+    .card__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px;
+      box-sizing: border-box;
+      background-color: rgba(25, 46, 68, 0.7);
+      transform: rotateX(-90deg);
+      transform-origin: bottom;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+    .card:hover .card__content,
+    .card.card--active .card__content {
+      transform: rotateX(0deg);
+    }
+    .card__title {
+      font-size: 20px;
+      color: #ffffff;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+    .card:hover svg {
+      scale: 0;
+    }
+    .card__description {
+      margin: 0px -30px 0px;
+      font-size: 12px;
+      color: #ffffff;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+    .toggle-animation {
+     padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  margin-top: 20px !important;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+    }
+    .toggle-animation:hover {
+       background-color: #e63946;
+  box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+    }
+    .toggle-animation.active {
+      transform: translateY(-1px);
+    }
 .card {
     position: relative;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
@@ -278,16 +289,16 @@
     background-clip: border-box;
     border: 3px solid rgba(25, 46, 76);
     border-radius: .45rem;
-}
-
+     }
 .cta.show {
     padding: 100px 20px;
 }
 
+cta.show h2 {
 .cta.show h2 {
     margin-bottom: 50px;
 }
-	
+
 .cta a, .contact-form form button {
      padding: 1.8em 3em !important; /* Pierwszy padding z !important */
     font-size: 14px;
@@ -891,14 +902,12 @@ img.unique-img {
     transition: background 0.3s, transform 0.3s !important;
     animation: fadeIn 1s ease-out !important;
 }
-
     
     .hero-content {
 	display: flex
         width: 100% !important;
 	justify-content: center;
     }
-
    .hero h1 {
     position: absolute;
     top: 40vh; /* Ustawienie odstępu od góry ekranu */
@@ -909,7 +918,6 @@ img.unique-img {
     animation: fadeInDown 1s ease-out !important;
     color: #fff !important;
 }
-
 .hero p {
     position: absolute;
     top: 48vh; /* Ustawienie odstępu od góry ekranu */
@@ -924,11 +932,9 @@ img.unique-img {
         padding: 20px 10px !important;
         margin: 10px 0 !important;
     }
-
    .values, .use-cases, .stats {
     flex-direction: column !important;
 }
-
 .values .value-item {
     width: 100% !important;
     margin: 10px 0 !important;
@@ -937,35 +943,28 @@ img.unique-img {
     overflow: hidden;
     max-height: 200px; /* Wysokość zwinietego kafelka */
 }
-
 .values .value-item.expanded {
     transform: translateY(0) !important; /* Przesunięcie w dół przy rozwinięciu */
     max-height: 200px; /* Wysokość rozwiniętego kafelka */
 }
-
 .values .value-item:hover {
     transform: translateX(0%) !important;
 }
-
 .values .value-item.hover-reset {
     transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
 }
-
     .container-unique {
         width: 100% !important;
         margin: 10px 0 !important;
     }
-
     .unique-img, .product-images img, .carousel-item img {
         width: 100% !important;
         height: auto !important;
         max-height: 80vh !important;
     }
-
     .testimonials .container-opinion-section {
         flex-direction: column !important;
     }
-
     .creator {
         width: 100% !important;
         height: auto !important;
@@ -975,32 +974,26 @@ img.unique-img {
     .quote {
      padding: 20px;
     }
-
     .contact-form form, .contact-card, .opinion-section {
         width: 100% !important;
         margin: 10px 0 !important;
 	padding: 20px;
     }
-
     header, footer {
         flex-direction: column !important;
         align-items: center !important;
         padding: 10px !important;
     }
-
     header nav a, .stats-item {
         margin: 5px 5px !important;
     }
-
     header h1, footer {
         text-align: center !important;
     }
-
     .quote, .creator-info, .container-all-unique, .contact-card-content {
         width: 100% !important;
         text-align: center !important;
     }
-
   .contact-label {
     position: fixed;
     left: 0;
@@ -1016,7 +1009,6 @@ img.unique-img {
     transition: transform 0.3s ease-in-out; /* Dodana właściwość animacji */
     transform: translateY(0); /* Początkowe przesunięcie */
 }
-
 .contact-card {
     position: fixed;
     left: 0;
@@ -1031,21 +1023,17 @@ img.unique-img {
     bottom: 0; /* Umieszczamy contact card na dole ekranu */
     transform: translateY(100%); /* Początkowe przesunięcie */
 }
-
 .contact-card.open {
     transform: translateY(0); /* Slide up */
 }
-
 .contact-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .contact-card-content p {
     margin-bottom: 10px;
 }
-
 .contact-card-content input {
     padding: 10px;
     margin-bottom: 10px;
@@ -1053,7 +1041,6 @@ img.unique-img {
     border-radius: 4px;
     width: 90%;
 }
-
 .contact-card-content button {
     padding: 10px 20px;
     background-color: white;
@@ -1062,30 +1049,23 @@ img.unique-img {
     border-radius: 4px;
     cursor: pointer;
 }
-
 .contact-card-content button:hover {
     background-color: #f1f1f1;
 }
-
-
     .container {
         flex-direction: column !important;
     }
-
     .feature-item, .iconsbig, .font-alt, .text-muted, .creator-wrapper {
         width: 100% !important;
         margin: 10px 0 !important;
     }
-
     .cta a, .contact-form form button, .creator img, .product-images img, .stats-item h3, .stats-item h2, .stats-item p {
         font-size: 1em !important;
     }
-
     /* Dodanie stylów dla kontenerów bg-light i px-5 */
     .bg-light {
         background-color: #f8f9fa !important;
     }
-
     .container.px-5 {
         justify-content: space-between !important;
         padding: 10px !important;
@@ -1093,7 +1073,6 @@ img.unique-img {
         width: 100% !important;
         box-sizing: border-box !important;
     }
-
     .row.gx-5 {
         padding: 10px !important;
         min-height: auto !important; /* Adjust min-height if necessary */
@@ -1101,7 +1080,6 @@ img.unique-img {
         box-sizing: border-box !important; /* Ensure padding is included in width */
         margin: 0 !important; /* Remove margin that might cause overflow */
     }
-
 .use-cases .carousel {
     display: flex;
     overflow-x: scroll;
@@ -1115,7 +1093,6 @@ img.unique-img {
     scroll-snap-align: center;
      overflow-y: hidden;
 }
-
 /* Elementy karuzeli */
 .use-cases .carousel-item {
     scroll-snap-align: center;
@@ -1141,21 +1118,17 @@ img.unique-img {
 .carousel p {
 white-space: normal;
 }
-
 /* Hover na elementach karuzeli */
 .use-cases .carousel-item:hover {
     animation-play-state: paused;
 }
-
 /* Animacje */
 .use-cases .carousel-item:nth-child(odd) {
     animation-delay: 0.5s;
 }
-
 .use-cases .carousel-item:nth-child(even) {
     animation-delay: 1s;
 }
-
 /* Nagłówki */
 .use-cases h2, .use-cases h3 {
     text-align: center;
@@ -1164,7 +1137,6 @@ white-space: normal;
     padding: 0 10px; /* Zapewnij odstęp tekstu od krawędzi ekranu */
     box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
 }
-
 /* Hover efekt na karcie */
 .use-cases .carousel-item:hover {
     background-color: #e63946;
@@ -1172,7 +1144,6 @@ white-space: normal;
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(230, 57, 70, 0.5);
 }
-
 /* Obrazki */
 .use-cases .carousel-item img {
     width: 100%; /* Zapewnia, że obrazki będą dopasowane do szerokości kart karuzeli */
@@ -1181,7 +1152,6 @@ white-space: normal;
     border-radius: 10px;
     object-fit: contain; /* Zachowuje proporcje obrazków w ramach dostępnej przestrzeni */
 }
-
 /* Teksty wewnątrz kart */
 .use-cases .carousel-item h3, .use-cases .carousel-item p {
     margin: 10px 0;
@@ -1189,7 +1159,6 @@ white-space: normal;
     padding: 0 10px; /* Zapewnij odstęp tekstu od krawędzi karty */
     box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
 }
-
 /* Przycisk */
 .use-cases .carousel-item button {
     background: #1d3557;
@@ -1202,32 +1171,26 @@ white-space: normal;
     margin-top: 10px;
     align-self: center;
 }
-
 .use-cases .carousel-item button:hover {
     background: #457b9d;
     transform: scale(1.1);
 }
-
 /* Elementy rozszerzone */
 .use-cases .carousel-item.expanded {
     height: auto;
 }
-
 /* Usunięcie efektu przesuwania strony na boki */
 body {
     overflow-x: hidden; /* Zablokuj przewijanie w poziomie */
 }
-
 .gryc-section {
 padding: 10px;
 }
-
 @media (prefers-color-scheme: dark) {
   .card:hover {
     box-shadow: 0 8px 16px #000000;
   }
 }
-
 @media (max-width: 768px) {
   section.card {
     max-width: 100%;
@@ -1254,46 +1217,46 @@ padding: 10px;
             <a href="#cta">Zobacz opinie</a>
         </div>
     </section>
-<section class="outer-container">
-    <section class="card-container">
-        <div class="card-wrapper">
-            <p class="card__title">Prostota i wygoda</p>
-            <div class="card">
-                <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
-                <div class="card__content">
-                    <p class="card__description">
-                        Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
-                    </p>
-                </div>
-            </div>
-            <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
+     <section class="outer-container">
+     <section class="card-container">
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
+        <div class="card__content">
+          <p class="card__title">Prostota i wygoda</p>
+          <p class="card__description">
+            Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
+          </p>
         </div>
-        <div class="card-wrapper">
-            <p class="card__title">Bezpieczeństwo</p>
-            <div class="card">
-                <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
-                <div class="card__content">
-                    <p class="card__description">
-                        Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
-                    </p>
-                </div>
-            </div>
-            <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
+      </div>
+      <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
+    </div>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
+        <div class="card__content">
+          <p class="card__title">Bezpieczeństwo</p>
+          <p class="card__description">
+            Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
+          </p>
         </div>
-        <div class="card-wrapper">
-            <p class="card__title">Skalowalność</p>
-            <div class="card">
-                <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
-                <div class="card__content">
-                    <p class="card__description">
-                        Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
-                    </p>
-                </div>
-            </div>
-            <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
+      </div>
+      <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
+    </div>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
+        <div class="card__content">
+          <p class="card__title">Skalowalność</p>
+          <p class="card__description">
+            Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
+          </p>
         </div>
-    </section>
-</section>
+      </div>
+      <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
+    </div>
+  </section>
+  </section>
 	
 	<br></br>
 	
