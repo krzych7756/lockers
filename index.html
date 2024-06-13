@@ -152,11 +152,13 @@ section.card-container {
       max-width: 1300px;
       width: 100%;
     }
+
     .card-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     section.card {
       position: relative;
       width: 100%;
@@ -173,6 +175,7 @@ section.card-container {
       margin: 20px auto;
       flex-direction: column;
     }
+
     .card img {
       width: 100%;
       max-width: 600px;
@@ -180,11 +183,13 @@ section.card-container {
       margin-bottom: 10px;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .card svg {
       fill: #333;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       border-radius: 3px;
     }
+
     .card:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px #000000;
@@ -203,7 +208,1028 @@ section.card-container {
     .card__content {
       position: absolute;
       top: 0;
-<h1>Lockers</h1>
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px;
+      box-sizing: border-box;
+      background-color: rgba(25, 46, 68, 0.7);
+      transform: rotateX(-90deg);
+      transform-origin: bottom;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+
+    .card:hover .card__content,
+    .card.card--active .card__content {
+      transform: rotateX(0deg);
+    }
+
+    .card__title {
+      font-size: 20px;
+      color: #ffffff;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .card:hover svg {
+      scale: 0;
+    }
+
+    .card__description {
+      margin: 0px -30px 0px;
+      font-size: 12px;
+      color: #ffffff;
+      line-height: 1.4;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    .toggle-animation {
+      background-color: #192e4c;
+      border: 2px solid #e0e0e0;
+      border-radius: 50%;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 10px;
+      width: 78px;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-animation:hover {
+      background-color: #e63946;
+      color: #ffffff;
+      box-shadow: 0 0 0 3px #787878;
+    }
+
+    .toggle-animation.active {
+      background-color: #ff0000;
+      color: #ffffff;
+    }
+
+
+
+.cta a, .contact-form form button {
+    background: #e63946 !important;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    transition: background 0.3s, transform 0.3s !important;
+    display: inline-block !important;
+    margin: 10px 0 !important;
+}
+.cta a:hover, .contact-form form button:hover {
+    background: #d62828 !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6) !important;
+}
+.contact-form form {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    animation: fadeIn 1s ease-out !important;
+}
+        .contact-form form input, .contact-form form textarea {
+            width: 100% !important;
+            max-width: 600px !important;
+            padding: 10px !important;
+            margin-bottom: 10px !important;
+            border: 1px solid #ccc !important;
+            border-radius: 5px !important;
+            transition: border-color 0.3s !important;
+        }
+        .contact-form form input:focus, .contact-form form textarea:focus {
+            border-color: #e63946 !important;
+        }
+		
+		.use-cases {
+    padding-bottom: 30px !important;
+    height: auto !important;
+}
+.use-cases .carousel-container {
+    position: relative !important;
+}
+.use-cases .carousel {
+    display: flex !important;
+    overflow-x: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    transition: transform 0.5s ease-out !important;
+    padding-bottom: 20px !important;
+    overflow-y: hidden !important;
+}
+.left-arrow,
+.right-arrow {
+    font-size: 24px;
+    color: #ffffff; /* White color for better contrast */
+    background-color: #e63946; /* Solid background */
+    border: none; /* Remove border */
+    width: 50px; /* Increased width */
+    height: 50px; /* Height of the arrows */
+    line-height: 50px; /* Centering text */
+    text-align: center; /* Centering text */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    border-radius: 50%; /* Circular shape */
+    margin: 0 8px; /* Space between arrows */
+    position: absolute; /* Positioning arrows */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* To keep arrows on top */
+}
+.left-arrow {
+    left: 10px; /* Positioning the left arrow */
+}
+.right-arrow {
+    right: 10px; /* Positioning the right arrow */
+}
+.left-arrow:hover,
+.right-arrow:hover {
+    background-color: #d62828; /* Darker background color on hover */
+    color: #fff; /* Text color remains white on hover */
+}
+.container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 200px !important; /* Example height for the container */
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+.use-cases .carousel-item {
+    scroll-snap-align: start;
+    flex: none;
+    width: 350px;
+    margin-right: 20px;
+    background: #ffffff; /* White background for better readability */
+    padding: 20px;
+    border-radius: 10px; /* More rounded corners */
+    transition: background-color 0.5s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    box-shadow: 0 4px 12px rgba(40, 1, 125, 0.2); /* blue shadow */
+    color: #1d3557; /* Darker text color for contrast */
+    position: relative;
+    text-align: left;
+    margin-bottom: 60px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: float 3s infinite ease-in-out; /* Apply floating animation */
+    animation-play-state: running; /* Ensure animation is running */
+}
+.use-cases .carousel:hover .carousel-item {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+.use-cases .carousel-item:nth-child(odd) {
+    animation-delay: 0.5s; /* Delay for odd items */
+}
+.use-cases .carousel-item:nth-child(even) {
+    animation-delay: 1s; /* Delay for even items */
+}
+.use-cases h2 {
+    margin-bottom: 30px; 
+    margin-top: 30px;
+    text-align: center; /* Center title text */
+    color: #1d3557; /* Darker title color */
+}
+.use-cases h3 {
+    font-size: 1.4em; /* Increased font size */
+    text-align: center; /* Centered text */
+    animation: fadeInDown 1s ease-out;
+    color: #1d3557; /* Darker subtitle color */
+}
+.use-cases .carousel-item:hover {
+    background-color: #e63946; 
+    color: #fff; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 6px 16px rgba(230, 57, 70, 0.5); /* Darker red shadow on hover */
+}
+.use-cases .carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* More rounded corners for images */
+}
+.use-cases .carousel-item h3 {
+    font-size: 1.4em;
+    color: #1d3557; /* Darker subtitle color */
+    text-align: center;
+    margin: 10px 0; /* Adjusted margin */
+}
+.use-cases .carousel-item p {
+    text-align: center; /* Center text */
+    margin: 10px 0; /* Adjusted margin */
+    color: #1d3557; /* Darker text color */
+}
+.use-cases .carousel-item button {
+    background: #1d3557; /* Dark background for buttons */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Adjusted padding */
+    border: none;
+    border-radius: 25px; /* More rounded corners */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 10px; /* Adjusted margin */
+    align-self: center; /* Center button horizontally */
+}
+.use-cases .carousel-item button:hover {
+    background: #457b9d; /* Change button color on hover */
+    transform: scale(1.1);
+}
+.use-cases .extra-content {
+    display: none; 
+}
+.use-cases .carousel-item.expanded .extra-content {
+    display: block; 
+}
+.use-cases .carousel-item.expanded {
+    height: auto; 
+}
+.contact-label {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it stays on top */
+    border-radius: 8px 0 0 8px;
+    text-align: center;
+    transition: right 0.3s ease-in-out;
+}
+.contact-label.hidden {
+    right: -200px; /* Move out of view */
+}
+.contact-card {
+    position: fixed;
+    right: -300px; /* Hidden position */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: red;
+    color: white;
+    border-radius: 8px 0 0 8px;
+    transition: right 0.3s ease-in-out;
+    z-index: 999; /* Ensure it's below the label */
+    padding: 20px;
+}
+.contact-card.open {
+    right: 0; /* Slide out */
+}
+.contact-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-card-content p {
+    margin-bottom: 10px;
+}
+.contact-card-content input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+.contact-card-content button {
+    padding: 10px 20px;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.contact-card-content button:hover {
+    background-color: #f1f1f1;
+}
+      
+.opinion-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 60px !important;
+}
+.container-opinion-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Spacing between tiles */
+}
+.creator {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff; /* Tile background */
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 350px; /* Fixed width for the tile */
+    height: 400px; /* Increased height for more space */
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.creator:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+.quote {
+    font-size: 14px;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 20px; /* Space between quote and bottom section */
+}
+.creator-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Push the bottom section to the bottom */
+}
+.creator img {
+    border-radius: 50%; /* Circular image */
+    border: 5px solid #ffffff; /* White border around the image */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px; /* Space between image and text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.creator-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* Reset all margins */
+}
+.creator-info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+.creator-info span {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+.creator-info-adjustable {
+    margin-top: 0; /* Adjust as needed */
+    margin-bottom: 0; /* Adjust as needed */
+    margin-left: 0; /* Adjust as needed */
+    margin-right: 80px; /* Adjust as needed */
+    padding-top: 0; /* Adjust as needed */
+    padding-bottom: 0; /* Adjust as needed */
+    padding-left: 0; /* Adjust as needed */
+    padding-right: 0; /* Adjust as needed */
+}
+.creator p {
+    color: #666;
+    font-style: italic; /* Italic for the quote */
+    font-size: 1em; /* Smaller font size for the quote */
+    margin: 10px 0;
+}
+.creator h3 {
+    color: #333;
+    font-size: 1.1em;
+    margin: 4px 14px !important !important; /* Adjusted margin for name */
+}
+.creator span {
+    position: relative;
+    color: #999;
+    font-size: 1em;
+    float: right;
+    z-index: 10 !important;
+    display: block;
+    clear: both;
+    margin-top: -4px; /* Adjusted margin for profession */
+}
+.quote {
+    font-size: 1.35em;
+    color: #0077cc; /* Quote color */
+    margin-bottom: 10px; /* Reduced margin-bottom for the quote */
+    position: relative;
+}
+.quote::before {
+    content: "“";
+    font-size: 1.6em;
+    color: #0077cc;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+.quote::after {
+    content: "”";
+    font-size: 1.4em;
+    color: #0077cc;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+}
+.creator-wrapper {
+    display: flex;
+    overflow: hidden; /* Hide elements overflowing the container */
+    width: 100%;
+}
+        .product-images img {
+            width: 100% !important; 
+            max-width: 800px !important; 
+            margin: 10px 0 !important; 
+            border-radius: 10px !important; 
+            transition: transform 0.3s !important; 
+        }
+        .product-images img:hover {
+            transform: scale(1.05) !important; 
+        }
+        .stats {
+            background: #1d3557 !important; 
+            color: #fff !important; 
+            display: flex !important; 
+            justify-content: space-around !important; 
+            padding: 40px 20px !important; 
+            text-align: center !important; 
+            margin: 20px 0 !important; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; 
+            border-radius: 10px !important; 
+        }
+            .stats h2 {
+            font-size: 1.2em !important;
+            justify-content: center !important;
+            animation: fadeInDown 1s ease-out !important;
+            color: #fff !important;
+        }
+        .stats-item {
+            margin: 20px !important; 
+            transition: transform 0.3s !important; 
+        }
+        .stats-item h3 {
+            font-size: 3em !important; 
+            color: #fff !important; 
+            margin-bottom: 10px !important; 
+        }
+.stats-item h2 {
+            font-size: 3em !important; 
+            color: #fff !important; 
+            margin-bottom: 10px !important; 
+        }
+        .stats-item p {
+            color: #fff !important; 
+        }
+	.bg-light {
+    background-color: #f8f9fa !important;
+}
+	.bg-light h2{
+         margin-bottom: 30px !important;
+    margin-top: 30px !important;
+    text-align: center !important;
+    color: rgb(29, 53, 87) !important;
+	}
+        .display-4 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 2.8;
+       }
+       .container.px-5 {
+    padding: 20px; /* Optional: Add padding to the container */
+    min-height: 500px; /* Adjust this value as needed */
+       }
+	
+.font-alt {
+    font-family: 'Arial', sans-serif !important;
+    color: #192e4c !important;
+}
+.text-muted {
+    color: #6c757d !important;
+}
+.iconsbig {
+    width: 100px !important;
+    height: 100px !important;
+    transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out !important;
+}
+.iconsbig:hover {
+    transform: scale(1.2) rotate(15deg) !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+.feature-item {
+    border: 0px solid #192e4c !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important; /* Ensure space below each feature item */
+    border-radius: 10px !important;
+    background-color: #fff !important;
+    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out !important;
+    position: relative !important; /* Keep this for absolute positioning of ::before pseudo-element */
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6) !important;
+    z-index: 1; /* Ensure feature item stays above other content */
+}
+.feature-item:hover {
+    transform: translateY(-15px) !important; /* Lift on hover */
+    background-color: #e63946 !important;
+    color: #fff !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+.feature-item:hover .font-alt {
+    color: #fff !important;
+}
+.feature-item:hover .text-muted {
+    color: #fff !important;
+}
+.feature-item::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    transition: top 0.6s ease-in-out !important;
+    z-index: -1; /* Ensure pseudo-element stays behind feature item content */
+}
+.feature-item:hover::before {
+    top: 0 !important;
+}
+	
+        footer {
+            background: #1d3557 !important; 
+            color: #fff !important; 
+            padding: 20px !important; 
+            border-radius: 10px !important; 
+            text-align: center !important; 
+        }
+h1.unique-heading {
+  text-align: center;
+  color: #e63946;
+  z-index: 2;
+  position: relative;
+}
+.container-all-unique {
+  width: fit-content;
+  margin: 60px auto; /* Dodanie większych marginesów, aby oddzielić sekcję */
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px; /* Dodatkowy padding, aby zwiększyć przestrzeń wewnątrz sekcji */
+  text-align: center;
+  background: #fff; /* Opcjonalne: Dodanie tła, aby wyróżnić sekcję */
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  opacity: 1;
+  display: inline-block; /* Dopasowanie kontenera do zawartości */
+}
+.container-unique {
+  width: calc(33% - 6px);
+  overflow: hidden;
+  height: fit-content;
+  margin: 3px;
+  padding: 0;
+  display: block;
+  position: relative;
+  float: left;
+  z-index: 1;
+   
+}
+img.unique-img {
+  width: 100%;
+  transition-duration: .3s;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+.title-unique {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  top: 35%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 1.6em;
+  text-shadow: 1px 5px 10px black;
+  transition-duration: .3s;
+  z-index: 2;
+  display: none;
+}
+.text-unique {
+  position: absolute;
+  top: 70%;
+  cursor: pointer;
+  max-width: 80%;
+  text-align: center;
+  left: 50%;
+  text-shadow: 1px 5px 10px black;
+  font-size: 1em;
+  margin-right: -50%;
+  transition-duration: .3s;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: none;
+}
+.container-unique:hover img.unique-img {
+  transform: scale(1.2);
+  transition-duration: .3s;
+  filter: grayscale(50%);
+  opacity: .7;
+}
+.container-unique:hover .title-unique, .container-unique:hover .text-unique {
+  color: white;
+  display: block;
+  transition-duration: .3s;
+}
+@media only screen and (max-width: 800px) {
+    body {
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .hero {
+        height: 100vh !important;
+        display: block !important;
+	background: url('https://gryc24.pl/res/files/hero-lp-mobile.png') no-repeat center center/contain 
+    }
+  .hero a {
+    position: absolute;
+    top: 55vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e63946 !important;
+    color: #fff !important;
+    padding: 8px 20px !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    transition: background 0.3s, transform 0.3s !important;
+    animation: fadeIn 1s ease-out !important;
+}
+
+    
+    .hero-content {
+	display: flex
+        width: 100% !important;
+	justify-content: center;
+    }
+
+   .hero h1 {
+    position: absolute;
+    top: 40vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em !important;
+    justify-content: center !important;
+    animation: fadeInDown 1s ease-out !important;
+    color: #fff !important;
+}
+
+.hero p {
+    position: absolute;
+    top: 48vh; /* Ustawienie odstępu od góry ekranu */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3em !important;
+    margin-bottom: 15px !important;
+    animation: fadeInUp 1s ease-out !important;
+    white-space: nowrap;
+}
+    .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
+        padding: 20px 10px !important;
+        margin: 10px 0 !important;
+    }
+
+   .values, .use-cases, .stats {
+    flex-direction: column !important;
+}
+
+.values .value-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+    transform: translateY(0) !important;
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    overflow: hidden;
+    max-height: 200px; /* Wysokość zwinietego kafelka */
+}
+
+.values .value-item.expanded {
+    transform: translateY(0) !important; /* Przesunięcie w dół przy rozwinięciu */
+    max-height: 200px; /* Wysokość rozwiniętego kafelka */
+}
+
+.values .value-item:hover {
+    transform: translateX(0%) !important;
+}
+
+.values .value-item.hover-reset {
+    transform: translateX(0) !important; /* Przywrócenie do stanu początkowego */
+}
+
+    .container-unique {
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+
+    .unique-img, .product-images img, .carousel-item img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 80vh !important;
+    }
+
+    .testimonials .container-opinion-section {
+        flex-direction: column !important;
+    }
+
+    .creator {
+        width: 100% !important;
+        height: auto !important;
+        margin: 10px 0 !important;
+	padding: 20px;
+    }
+    .quote {
+     padding: 20px;
+    }
+
+    .contact-form form, .contact-card, .opinion-section {
+        width: 100% !important;
+        margin: 10px 0 !important;
+	padding: 20px;
+    }
+
+    header, footer {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 10px !important;
+    }
+
+    header nav a, .stats-item {
+        margin: 5px 5px !important;
+    }
+
+    header h1, footer {
+        text-align: center !important;
+    }
+
+    .quote, .creator-info, .container-all-unique, .contact-card-content {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+  .contact-label {
+    position: fixed;
+    left: 0;
+    top: 95%;
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999; /* Zmienione z 1000, aby contact label był na wierzchu */
+    bottom: 0; /* Umieszczamy contact label na dole ekranu */
+    transition: transform 0.3s ease-in-out; /* Dodana właściwość animacji */
+    transform: translateY(0); /* Początkowe przesunięcie */
+}
+
+.contact-card {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease-in-out; /* Dodana właściwość animacji */
+    z-index: 998; /* Zmienione z 999, aby contact card był pod contact label */
+    padding: 20px;
+    text-align: center;
+    bottom: 0; /* Umieszczamy contact card na dole ekranu */
+    transform: translateY(100%); /* Początkowe przesunięcie */
+}
+
+.contact-card.open {
+    transform: translateY(0); /* Slide up */
+}
+
+.contact-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-card-content p {
+    margin-bottom: 10px;
+}
+
+.contact-card-content input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 90%;
+}
+
+.contact-card-content button {
+    padding: 10px 20px;
+    background-color: white;
+    color: red;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-card-content button:hover {
+    background-color: #f1f1f1;
+}
+
+
+    .container {
+        flex-direction: column !important;
+    }
+
+    .feature-item, .iconsbig, .font-alt, .text-muted, .creator-wrapper {
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+
+    .cta a, .contact-form form button, .creator img, .product-images img, .stats-item h3, .stats-item h2, .stats-item p {
+        font-size: 1em !important;
+    }
+
+    /* Dodanie stylów dla kontenerów bg-light i px-5 */
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .container.px-5 {
+        justify-content: space-between !important;
+        padding: 10px !important;
+        min-height: 2000px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .row.gx-5 {
+        padding: 10px !important;
+        min-height: auto !important; /* Adjust min-height if necessary */
+        width: 100% !important;
+        box-sizing: border-box !important; /* Ensure padding is included in width */
+        margin: 0 !important; /* Remove margin that might cause overflow */
+    }
+
+.use-cases .carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    height: 80vh; /* Skaluj wysokość do wysokości ekranu */
+    padding: 10px;
+    flex-wrap: nowrap;
+    scroll-behavior: smooth; /* Dodaj płynne przewijanie */
+    box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
+    scroll-snap-align: center;
+     overflow-y: hidden;
+}
+
+/* Elementy karuzeli */
+.use-cases .carousel-item {
+    scroll-snap-align: center;
+    flex: none;
+    width: 85vw; /* Zapewnia, że każda karta zajmuje całą szerokość ekranu */
+    margin: 0 10px; /* Dodaje odstęp między kartami */
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.5s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(40, 1, 125, 0.2);
+    color: #1d3557;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    justify-content: space-between;
+    animation: float 3s infinite ease-in-out;
+    animation-play-state: running;
+    gap: 5px;
+    box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
+    overflow-y: hidden;
+}
+.carousel p {
+white-space: normal;
+}
+
+/* Hover na elementach karuzeli */
+.use-cases .carousel-item:hover {
+    animation-play-state: paused;
+}
+
+/* Animacje */
+.use-cases .carousel-item:nth-child(odd) {
+    animation-delay: 0.5s;
+}
+
+.use-cases .carousel-item:nth-child(even) {
+    animation-delay: 1s;
+}
+
+/* Nagłówki */
+.use-cases h2, .use-cases h3 {
+    text-align: center;
+    color: #1d3557;
+    margin: 30px 0;
+    padding: 0 10px; /* Zapewnij odstęp tekstu od krawędzi ekranu */
+    box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
+}
+
+/* Hover efekt na karcie */
+.use-cases .carousel-item:hover {
+    background-color: #e63946;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(230, 57, 70, 0.5);
+}
+
+/* Obrazki */
+.use-cases .carousel-item img {
+    width: 100%; /* Zapewnia, że obrazki będą dopasowane do szerokości kart karuzeli */
+    height: auto;
+    max-height: 200px; /* Ogranicza maksymalną wysokość obrazków, aby nie były za duże */
+    border-radius: 10px;
+    object-fit: contain; /* Zachowuje proporcje obrazków w ramach dostępnej przestrzeni */
+}
+
+/* Teksty wewnątrz kart */
+.use-cases .carousel-item h3, .use-cases .carousel-item p {
+    margin: 10px 0;
+    color: #1d3557;
+    padding: 0 10px; /* Zapewnij odstęp tekstu od krawędzi karty */
+    box-sizing: border-box; /* Upewnij się, że padding jest wliczany do szerokości */
+}
+
+/* Przycisk */
+.use-cases .carousel-item button {
+    background: #1d3557;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.use-cases .carousel-item button:hover {
+    background: #457b9d;
+    transform: scale(1.1);
+}
+
+/* Elementy rozszerzone */
+.use-cases .carousel-item.expanded {
+    height: auto;
+}
+
+/* Usunięcie efektu przesuwania strony na boki */
+body {
+    overflow-x: hidden; /* Zablokuj przewijanie w poziomie */
+}
+
+.gryc-section {
+padding: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 8px 16px #000000;
+  }
+}
+
+@media (max-width: 768px) {
+  section.card {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+}
+	
+</style>
+<body>
+    <header>
+        <h1>GRYC</h1>
+        <nav>
+            <a href="#values">Wartości</a>
+            <a href="#cta">Kontakt</a>
+            <a href="#use-cases">Przykłady</a>
+            <a href="#testimonials">Opinie</a>
+            <a href="#creator">Twórca</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Lockers</h1>
+            <p>System do zarządzania dostępem</p>
             <a href="#cta">Zobacz opinie</a>
         </div>
     </section>
@@ -211,13 +1237,43 @@ section.card-container {
      <section class="card-container">
     <div class="card-wrapper">
       <div class="card">
-<h1>Lockers</h1>
+        <img src="https://gryc24.pl/res/files/lp-lockers-a.svg" alt="Prostota i wygoda">
+        <div class="card__content">
+          <p class="card__title">Prostota i wygoda</p>
+          <p class="card__description">
+            Jedno oprogramowanie do obsługi na tablecie otwiera i zamyka wiele zamków w przestrzeni roboczej. Dodatkowe informacje w kontekście łatwości użytkowania i integracji z innymi systemami.
+          </p>
+        </div>
+      </div>
+      <button class="toggle-animation" data-target="1">Zobacz korzyść</button>
+    </div>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-b.svg" alt="Bezpieczeństwo">
+        <div class="card__content">
+          <p class="card__title">Bezpieczeństwo</p>
+          <p class="card__description">
+            Pozwala nadawać i odbierać dostępy w łatwy sposób, zapewniając bezpieczeństwo. Dodatkowe informacje na temat protokołów bezpieczeństwa i systemów monitoringu.
+          </p>
+        </div>
+      </div>
+      <button class="toggle-animation" data-target="2">Zobacz korzyść</button>
+    </div>
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="https://gryc24.pl/res/files/lp-lockers-c.svg" alt="Skalowalność">
+        <div class="card__content">
+          <p class="card__title">Skalowalność</p>
+          <p class="card__description">
+            Idealny dla dużych korporacji, szkół, urzędów, administratorów biur, hoteli i szpitali. Dodatkowe informacje na temat elastyczności i dostosowywania do różnych potrzeb użytkowników.
+          </p>
+        </div>
       </div>
       <button class="toggle-animation" data-target="3">Zobacz korzyść</button>
     </div>
   </section>
   </section>
-
+	
 	<br></br>
 	
 <!-- Adding margin between sections -->
@@ -820,14 +1876,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 contactLabel.classList.add("hidden"); // Hide the label
             }
         }
+
 document.addEventListener('DOMContentLoaded', function() {
     if (isMobile()) {
         const items = document.querySelectorAll('.values .value-item');
+
         const hammer = new Hammer(document);
+
         hammer.on('tap', function(event) {
             const clickedItem = event.target.closest('.value-item');
             if (!clickedItem) return;
+
             const expanded = clickedItem.classList.contains('expanded');
+
             // Toggle expanded state for the clicked item
             if (expanded) {
                 clickedItem.classList.remove('expanded');
@@ -844,29 +1905,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 document.addEventListener("DOMContentLoaded", function() {
   const carousel = document.getElementById("carousel");
   let isDown = false;
   let startX;
   let scrollLeft;
+
   // Duplikujemy elementy karuzeli, aby uzyskać efekt zapętlenia
   const items = Array.from(carousel.children);
   items.forEach(item => {
     const clone = item.cloneNode(true);
     carousel.appendChild(clone);
   });
+
   // Event listeners do przesuwania karuzeli
   carousel.addEventListener("mousedown", (e) => {
     isDown = true;
     startX = e.pageX - carousel.offsetLeft;
     scrollLeft = carousel.scrollLeft;
   });
+
   carousel.addEventListener("mouseleave", () => {
     isDown = false;
   });
+
   carousel.addEventListener("mouseup", () => {
     isDown = false;
   });
+
   carousel.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
@@ -874,6 +1941,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const walk = (x - startX) * 3; // Prędkość przesuwania
     carousel.scrollLeft = scrollLeft - walk;
   });
+
   // Zapętlanie karuzeli
   carousel.addEventListener("scroll", () => {
     const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
@@ -883,17 +1951,20 @@ document.addEventListener("DOMContentLoaded", function() {
       carousel.scrollLeft = maxScrollLeft;
     }
   });
+
   // Dodanie obsługi przewijania dla zapętlania
   let timeoutId;
   const debounce = (func, delay) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(func, delay);
   };
+
   carousel.addEventListener("scroll", () => {
     debounce(() => {
       const scrollWidth = carousel.scrollWidth;
       const clientWidth = carousel.clientWidth;
       const scrollLeft = carousel.scrollLeft;
+
       if (scrollLeft + clientWidth >= scrollWidth) {
         carousel.scrollLeft = 0;
       }
@@ -907,6 +1978,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         card.classList.toggle('card--active');
         button.classList.toggle('active');
+
         if (card.classList.contains('card--active')) {
           content.style.transform = 'rotateX(0deg)';
         } else {
