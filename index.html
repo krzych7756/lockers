@@ -204,8 +204,6 @@ section.card {
   transform-origin: bottom;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .card:hover .card__content,
@@ -230,6 +228,8 @@ section.card {
   font-size: 12px; /* 3 times the original font-size of 14px */
   color: #ffffff;
   line-height: 1.4;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 @media (prefers-color-scheme: dark) {
