@@ -697,6 +697,52 @@ section.card-container {
     overflow: hidden; /* Hide elements overflowing the container */
     width: 100%;
 }
+.unique-header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.unique-header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.unique-header p {
+    font-size: 1.2em;
+}
+
+.unique-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.unique-gallery-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.unique-gallery-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.unique-gallery-item:hover .unique-gallery-image {
+    transform: scale(1.1);
+}
+
+.unique-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+
         .product-images img {
             width: 100% !important; 
             max-width: 800px !important; 
@@ -1319,7 +1365,16 @@ padding: 10px;
     margin: 10px auto;
   }
 }
-	
+
+@media (max-width: 768px) {
+    .unique-header h1 {
+        font-size: 2em;
+    }
+
+    .unique-header p {
+        font-size: 1em;
+    }
+}
 </style>
 <body>
     <header>
@@ -1721,6 +1776,22 @@ padding: 10px;
             </form>
         </div>
     </div>
+   <header class="unique-header">
+        <h1>Zobacz Nasze Najlepsze Projekty</h1>
+        <p>Nasza galeria przedstawia najnowsze projekty, które wyróżniają się na rynku.</p>
+    </header>
+    <section class="unique-gallery">
+        <div class="unique-gallery-item">
+            <img src="path/to/image1.jpg" alt="Opis zdjęcia 1" class="unique-gallery-image">
+        </div>
+        <div class="unique-gallery-item">
+            <img src="path/to/image2.jpg" alt="Opis zdjęcia 2" class="unique-gallery-image">
+        </div>
+        <div class="unique-gallery-item">
+            <img src="path/to/image3.jpg" alt="Opis zdjęcia 3" class="unique-gallery-image">
+        </div>
+        <!-- Dodaj więcej zdjęć tutaj -->
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
@@ -2092,5 +2163,37 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
     });
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll(".unique-gallery-image");
+    
+    images.forEach(image => {
+        image.addEventListener("click", () => {
+            const src = image.getAttribute("src");
+            const alt = image.getAttribute("alt");
+            openLightbox(src, alt);
+        });
+    });
+
+    function openLightbox(src, alt) {
+        const lightbox = document.createElement("div");
+        lightbox.id = "unique-lightbox";
+        lightbox.style.position = "fixed";
+        lightbox.style.top = 0;
+        lightbox.style.left = 0;
+        lightbox.style.width = "100%";
+        lightbox.style.height = "100%";
+        lightbox.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        lightbox.style.display = "flex";
+        lightbox.style.alignItems = "center";
+        lightbox.style.justifyContent = "center";
+        lightbox.style.cursor = "pointer";
+        lightbox.innerHTML = `<img src="${src}" alt="${alt}" style="max-width: 90%; max-height: 90%;">`;
+        document.body.appendChild(lightbox);
+
+        lightbox.addEventListener("click", () => {
+            document.body.removeChild(lightbox);
+        });
+    }
+});
 </script>
 </html>
