@@ -24,17 +24,18 @@
             max-width: 1200px !important; 
             margin: 0 auto !important; 
         }
-       header {
-    background: rgba(29, 53, 87, 0.9); /* Kolor z przezroczystością */
+      header {
+    background: rgba(29, 53, 87, 0.8);
     color: #fff;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; /* Pozostaje na górze strony */
-    top: 0; /* Przylega do górnej krawędzi ekranu */
-    z-index: 1000; /* Wyższy indeks z-index, aby być na wierzchu innych elementów */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień dla efektu głębi */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
 }
         header h1 {
             font-size: 1.5em !important; 
@@ -58,16 +59,16 @@
             font-weight: 700 !important; 
         }
         .hero {
-            background: url('https://gryc24.pl/res/files/lockers-herolp.svg') no-repeat center center/contain !important; 
-            color: #fff !important; 
-            height: 380px !important; 
-            display: flex !important; 
-            justify-content: center !important; 
-            align-items: center !important; 
-            text-align: center !important; 
-            position: relative !important; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important; 
-        }
+    background: linear-gradient(rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url('https://gryc24.pl/res/files/lockers-herolp.svg') no-repeat center center;
+    color: #fff;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
         .hero::after {
             content: '' !important; 
             position: absolute !important; 
@@ -98,59 +99,55 @@
         .hero a {
             
             padding: 1.8em 3em;
-            font-size: 17px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 800;
-            margin-top: 20px !important;
-            color: #192e4c;
-            background-color: #fff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-	    padding: 8px 20px !important;
-            transition: background 0.3s, transform 0.3s !important;
-            animation: fadeIn 1s ease-out !important;
-            margin-bottom: 15px !important;
-        }
-        .hero a:hover {
-            background: #e63946 !important;
-            background-color: #e63946;
-            box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
-	     font-weight: 1000;
-
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0 !important; transform: translateY(-50px) !important; }
-            to { opacity: 1 !important; transform: translateY(0) !important; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0 !important; transform: translateY(50px) !important; }
-            to { opacity: 1 !important; transform: translateY(0) !important; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0 !important; }
-            to { opacity: 1 !important; }
-        }
-        .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
-    padding: 40px 20px !important;
-    text-align: center !important;
-    background: #fff !important;
-    margin: 20px 0 !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-    border-radius: 10px !important;
-    opacity: 0; /* Ukrywamy początkowo */
-    transform: translateY(50px); /* Przesuwamy poniżej widocznego obszaru */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Dodajemy płynne przejścia */
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    margin-top: 40px;
+    color: #192e4c;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    animation: pulse 1.5s infinite;
 }
+        .hero a:hover, .cta a:hover, .contact-form form button:hover {
+    background: #e63946;
+    box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+      
+       .section, .values, .cta, .contact-form, .use-cases, .testimonials, .creator, .product-images, .stats, footer {
+    padding: 40px 20px;
+    text-align: center;
+    background: #fff;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
 .section.show, .values.show, .cta.show, .contact-form.show, .use-cases.show, .testimonials.show, .creator.show, .product-images.show, .stats.show, footer.show {
-    opacity: 1; /* Pokazujemy */
-    transform: translateY(0); /* Przesuwamy do pierwotnej pozycji */
+    opacity: 1;
+    transform: translateY(0);
 }
 .contact-form h2 {
     color: #192e4c !important;
@@ -317,29 +314,39 @@ section.card-container {
 }
 	
 .cta a, .contact-form form button {
-     padding: 1.8em 3em !important; /* Pierwszy padding z !important */
+     padding: 1.8em 3em;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    margin-top: 40px !important; /* Zwiększone przesunięcie w dół */
+    margin-top: 40px;
     color: #192e4c;
     background-color: #fff;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease 0s !important; /* Zawierające wszystkie animacje z !important */
+    transition: all 0.3s ease;
     cursor: pointer;
     outline: none;
-    margin-bottom: 15px !important;
-    animation: fadeIn 1s ease-out !important;
+    animation: pulse 1.5s infinite;
 }
-.cta a:hover, .contact-form form button:hover {
-     background: #e63946 !important;
-            background-color: #e63946;
-            box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
+        .hero a:hover, .cta a:hover, .contact-form form button:hover {
+    background: #e63946;
+    box-shadow: 0px 15px 20px rgba(230, 57, 70, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 .contact-form form {
     display: flex !important;
