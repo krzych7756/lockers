@@ -619,7 +619,8 @@ section.card-container {
 }
 .creator-bottom {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Arrange name and image vertically */
+    align-items: center; /* Center items */
     margin-top: auto; /* Push the bottom section to the bottom */
 }
 .creator img {
@@ -628,19 +629,25 @@ section.card-container {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-right: 20px; /* Space between image and text */
+    margin: 10px 0; /* Space between image and text */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .creator-info {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center text */
     margin: 0; /* Reset all margins */
+    text-align: center; /* Center text */
 }
 .creator-info h3 {
     margin: 0 0 5px 0; /* Margin for bottom space */
     font-size: 18px;
     font-weight: bold;
+    white-space: nowrap; /* Prevent line break */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .creator-info span {
     margin: 0 0 5px 0; /* Margin for bottom space */
     font-size: 14px;
@@ -668,9 +675,11 @@ section.card-container {
     margin: 10px 0;
 }
 .creator h3 {
-    color: #333;
-    font-size: 1.1em;
-    margin: 4px 14px !important !important; /* Adjusted margin for name */
+    font-size: 20px; /* Larger font size for name */
+    font-weight: bold;
+    white-space: nowrap; /* Prevent line break */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .creator span {
     position: relative;
