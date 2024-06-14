@@ -17,13 +17,105 @@
             box-sizing: border-box !important; 
         }
         body {
-            font-family: Arial, sans-serif !important; 
-            line-height: 1.6 !important; 
-            color: #1d3557 !important; 
-            background: #f8f9fa !important; 
-            max-width: 1200px !important; 
-            margin: 0 auto !important; 
-        }
+            font-family: Arial, sans-serif !important; .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Pojedynczy element galerii */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styl dla zdjęć w galerii */
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item img:hover {
+    opacity: 0.8;
+}
+
+/* Styl dla opisu zdjęcia */
+.gallery-item .description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1em;
+}
+
+.gallery-item:hover .description {
+    opacity: 1;
+}
+
+/* Animacja pojawiania się */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.gallery-item .description {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Styl dla przycisku w galerii */
+.gallery-item button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    opacity: 0;
+}
+
+.gallery-item:hover button {
+    opacity: 1;
+}
+
+.gallery-item button:hover {
+    background: #c53030;
+}
       header {
     background: rgba(29, 53, 87, 0.8);
     color: #fff;
