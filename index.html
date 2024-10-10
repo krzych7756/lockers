@@ -7,47 +7,64 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0f3057;
-            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        /* Tło z prowadzącym */
+        .container {
+            position: relative;
+            height: 100vh;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hubert_Urba%C5%84ski.jpg/800px-Hubert_Urba%C5%84ski.jpg'); /* zdjęcie prowadzącego */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 48, 87, 0.85); /* niebieskie tło z opacity */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            flex-direction: column;
+            color: white;
+            z-index: 1;
         }
-        
-        .container {
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
-            background-color: #1f4068;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-        }
-        
+
         h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s forwards;
         }
 
         .question {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
+            animation: fadeInLeft 1.5s forwards;
         }
 
         .answers {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 20px;
+            width: 80%;
+            max-width: 600px;
+            animation: fadeInRight 2s forwards;
         }
 
         .answer {
             background-color: #162447;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 1.2rem;
         }
 
         .answer:hover {
@@ -56,6 +73,7 @@
 
         .lifelines {
             margin-top: 30px;
+            animation: fadeInUp 2.5s forwards;
         }
 
         .lifeline {
@@ -73,6 +91,7 @@
             background-color: #00b4d8;
         }
 
+        /* Efekty na CTA */
         .cta-section {
             display: none;
             text-align: center;
@@ -82,56 +101,112 @@
             align-items: center;
             flex-direction: column;
             color: white;
+            position: relative;
         }
 
         .cta-text {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 20px;
+            opacity: 0;
+            animation: bounceIn 1.5s forwards ease-out 1s;
         }
 
         .cta-button {
             background-color: #e63946;
-            padding: 15px 30px;
+            padding: 20px 40px;
             border: none;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             border-radius: 5px;
             cursor: pointer;
-            animation: pulse 1s infinite;
+            opacity: 0;
+            animation: bounceIn 2s forwards ease-out 2s;
+            animation-delay: 1s;
         }
 
-        @keyframes pulse {
+        @keyframes fadeInDown {
             0% {
-                transform: scale(1);
+                opacity: 0;
+                transform: translateY(-50px);
             }
-            50% {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            60% {
+                opacity: 1;
                 transform: scale(1.1);
             }
             100% {
                 transform: scale(1);
             }
         }
+
     </style>
 </head>
 <body>
 
+    <!-- Pierwszy ekran z pytaniem -->
     <div class="container">
-        <h1>Parodia Milionerów</h1>
-        <div class="question">Musisz otworzyć szafkę w biurze. Ty znajdujesz się 150km od biura. Co robisz?</div>
-        <div class="answers">
-            <div class="answer">a). Udaję, że nic się nie dzieje</div>
-            <div class="answer">b). Proszę pracownika z biura o wyrwanie frontu szafki</div>
-            <div class="answer">c). Szukam teleportera w Google</div>
-            <div class="answer">d). Godzę się z losem</div>
-        </div>
+        <div class="overlay">
+            <h1>Parodia Milionerów</h1>
+            <div class="question">Musisz otworzyć szafkę w biurze. Ty znajdujesz się 150km od biura. Co robisz?</div>
+            <div class="answers">
+                <div class="answer">a). Udaję, że nic się nie dzieje</div>
+                <div class="answer">b). Proszę pracownika z biura o wyrwanie frontu szafki</div>
+                <div class="answer">c). Szukam teleportera w Google</div>
+                <div class="answer">d). Godzę się z losem</div>
+            </div>
 
-        <div class="lifelines">
-            <button class="lifeline" onclick="phoneAFriend()">Telefon do przyjaciela</button>
-            <button class="lifeline">50/50</button>
-            <button class="lifeline">Pytanie do publiczności</button>
+            <div class="lifelines">
+                <button class="lifeline" onclick="phoneAFriend()">Telefon do przyjaciela</button>
+                <button class="lifeline">50/50</button>
+                <button class="lifeline">Pytanie do publiczności</button>
+            </div>
         </div>
     </div>
 
+    <!-- Drugi ekran z CTA -->
     <div class="cta-section" id="ctaSection">
         <div class="cta-text">HILS - Twój przyjaciel od zarządzania dostępem</div>
         <button class="cta-button">Pobierz broszurę</button>
@@ -139,7 +214,6 @@
 
     <script>
         function phoneAFriend() {
-            document.body.style.backgroundColor = '#192e4c';
             document.querySelector('.container').style.display = 'none';
             document.getElementById('ctaSection').style.display = 'flex';
         }
