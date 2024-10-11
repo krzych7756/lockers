@@ -225,37 +225,75 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
-            // Dodaj fragmenty ekranu do sceny
-            for (let i = 0; i < 100; i++) {
-                let geometry = new THREE.BoxGeometry(1, 1, 1);
-                let material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff });
-                let cube = new THREE.Mesh(geometry, material);
-                cube.position.set(Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5);
-                cube.velocity = new THREE.Vector3(Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1);
-                pieces.push(cube);
-                scene.add(cube);
+            // Pobranie fragmentów strony do symulacji pęknięcia i rozpadu
+            const container = document.getElementById('gameContainer');
+            const containerRect = container.getBoundingClientRect();
+
+            // Podziel stronę na fragmenty (np. 10x10) i stwórz geometryczne kawałki
+            const rows = 10;
+            const cols = 10;
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    let geometry = new THREE.PlaneGeometry(0.5, 0.5);
+                    let material = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+                    let piece = new THREE.Mesh(geometry, material);
+                    piece.position.x = (j - cols / 2) * 0.6;
+                    piece.position.y = (i - rows / 2) * 0.6;
+                    scene.add(piece);
+                    pieces.push(piece);
+                }
             }
 
             camera.position.z = 5;
 
-            animateExplosion();
+            // Dodaj efekt pękania na początku
+            crackEffect();
         }
 
-        function animateExplosion() {
-            requestAnimationFrame(animateExplosion);
+        function crackEffect() {
+            // Pękanie strony: powolne dodanie ruchu do kawałków
+            let cracking = true;
+            let crackProgress = 0;
+            function animateCrack() {
+                if (cracking) {
+                    crackProgress += 0.01;
+                    pieces.forEach(piece => {
+                        piece.position.x += Math.sin(crackProgress) * 0.01;
+                        piece.position.y += Math.cos(crackProgress) * 0.01;
+                    });
+                    if (crackProgress > 1) {
+                        cracking = false;
+                        explodePieces();
+                    }
+                }
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateCrack);
+            }
+            animateCrack();
+        }
 
+        function explodePieces() {
+            // Eksplozja: kawałki lecą w różne strony
             pieces.forEach(piece => {
-                piece.position.add(piece.velocity);
-                piece.rotation.x += 0.05;
-                piece.rotation.y += 0.05;
+                piece.velocity = new THREE.Vector3(Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1);
             });
 
-            renderer.render(scene, camera);
+            function animateExplosion() {
+                pieces.forEach(piece => {
+                    piece.position.add(piece.velocity);
+                    piece.rotation.x += 0.05;
+                    piece.rotation.y += 0.05;
+                });
 
-            // Po 3 sekundach zakończ eksplozję i pokaż film
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateExplosion);
+            }
+            animateExplosion();
+
+            // Po eksplozji pokaż film
             setTimeout(function() {
                 document.getElementById('videoContainer').style.display = 'flex';
-                renderer.domElement.remove(); // Usuwamy canvas po eksplozji
+                renderer.domElement.remove();
             }, 3000);
         }
     </script>
