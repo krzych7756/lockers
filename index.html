@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milionerzy - Parodia</title>
+    <title>Milionerzy - Rozpad</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -201,13 +201,15 @@
 
     <!-- Three.js do efektów 3D -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <script>
         let scene, camera, renderer, pieces = [];
 
         function phoneAFriend() {
-            document.querySelector('.container').style.display = 'none';
+            const container = document.querySelector('.container');
             const ctaSection = document.getElementById('ctaSection');
+            container.style.display = 'none';
             ctaSection.style.display = 'flex';
 
             // Po 3 sekundach wywołaj efekt rozpadu
@@ -218,50 +220,68 @@
         }
 
         function explodeEffect() {
-            // Inicjalizacja sceny, kamery i renderera
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
+            html2canvas(document.body).then(canvas => {
+                document.body.appendChild(canvas);
+                canvas.style.display = 'none';
 
-            // Pobranie fragmentów strony do symulacji pęknięcia i rozpadu
-            const container = document.getElementById('gameContainer');
-            const containerRect = container.getBoundingClientRect();
+                // Inicjalizacja Three.js
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer({ alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
 
-            // Podziel stronę na fragmenty (np. 10x10) i stwórz geometryczne kawałki
-            const rows = 10;
-            const cols = 10;
-            for (let i = 0; i < rows; i++) {
-                for (let j = 0; j < cols; j++) {
-                    let geometry = new THREE.PlaneGeometry(0.5, 0.5);
-                    let material = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
-                    let piece = new THREE.Mesh(geometry, material);
-                    piece.position.x = (j - cols / 2) * 0.6;
-                    piece.position.y = (i - rows / 2) * 0.6;
-                    scene.add(piece);
-                    pieces.push(piece);
+                const rows = 20;
+                const cols = 20;
+                const fragmentWidth = canvas.width / cols;
+                const fragmentHeight = canvas.height / rows;
+
+                for (let i = 0; i < rows; i++) {
+                    for (let j = 0; j < cols; j++) {
+                        // Wytnij fragment strony z canvasu
+                        let fragmentCanvas = document.createElement('canvas');
+                        fragmentCanvas.width = fragmentWidth;
+                        fragmentCanvas.height = fragmentHeight;
+                        let ctx = fragmentCanvas.getContext('2d');
+                        ctx.drawImage(canvas, j * fragmentWidth, i * fragmentHeight, fragmentWidth, fragmentHeight, 0, 0, fragmentWidth, fragmentHeight);
+
+                        // Przekształć wycinek na teksturę
+                        let texture = new THREE.Texture(fragmentCanvas);
+                        texture.needsUpdate = true;
+
+                        let geometry = new THREE.PlaneGeometry(1, 1);
+                        let material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+                        let piece = new THREE.Mesh(geometry, material);
+
+                        // Pozycja kawałka w siatce
+                        piece.position.x = (j - cols / 2) * 1.1;
+                        piece.position.y = (i - rows / 2) * 1.1;
+
+                        scene.add(piece);
+                        pieces.push(piece);
+                    }
                 }
-            }
 
-            camera.position.z = 5;
+                camera.position.z = 30;
 
-            // Dodaj efekt pękania na początku
-            crackEffect();
+                // Dodaj efekt pękania na początku
+                crackEffect();
+            });
         }
 
         function crackEffect() {
-            // Pękanie strony: powolne dodanie ruchu do kawałków
-            let cracking = true;
+            // Efekt pękania: delikatny ruch fragmentów na początku
             let crackProgress = 0;
+            let cracking = true;
             function animateCrack() {
                 if (cracking) {
                     crackProgress += 0.01;
                     pieces.forEach(piece => {
-                        piece.position.x += Math.sin(crackProgress) * 0.01;
-                        piece.position.y += Math.cos(crackProgress) * 0.01;
+                        piece.position.x += Math.sin(crackProgress) * 0.02;
+                        piece.position.y += Math.cos(crackProgress) * 0.02;
                     });
-                    if (crackProgress > 1) {
+
+                    if (crackProgress > 0.5) {
                         cracking = false;
                         explodePieces();
                     }
@@ -273,7 +293,7 @@
         }
 
         function explodePieces() {
-            // Eksplozja: kawałki lecą w różne strony
+            // Kawałki lecą w różnych kierunkach
             pieces.forEach(piece => {
                 piece.velocity = new THREE.Vector3(Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1);
             });
@@ -290,7 +310,7 @@
             }
             animateExplosion();
 
-            // Po eksplozji pokaż film
+            // Po eksplozji pokazujemy film
             setTimeout(function() {
                 document.getElementById('videoContainer').style.display = 'flex';
                 renderer.domElement.remove();
