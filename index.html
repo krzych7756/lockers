@@ -128,7 +128,6 @@
         .cta-text {
             font-size: 2.5rem;
             margin-bottom: 50px; /* Zwiększony odstęp */
-            animation: punchIn 1s ease-in-out;
         }
 
         .cta-button {
@@ -139,47 +138,6 @@
             font-size: 1.5rem;
             border-radius: 10px;
             cursor: pointer;
-            animation: punchInButton 1.5s ease-in-out 0.5s;
-            animation-fill-mode: forwards;
-        }
-
-        /* Efekt rozbicia strony */
-        .break-into-pieces {
-            position: relative;
-            animation: shatter 1s ease-in-out forwards;
-            overflow: hidden;
-        }
-
-        /* Keyframes for shatter effect */
-        @keyframes shatter {
-            0% { transform: scale(1); opacity: 1; }
-            100% { 
-                transform: scale(0.1) rotate(30deg); 
-                opacity: 0; 
-                filter: blur(10px);
-            }
-        }
-
-        @keyframes punchIn {
-            0% {
-                transform: scale(0.3);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes punchInButton {
-            0% {
-                transform: scale(0.3);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
         }
 
         /* Film pod stroną */
@@ -199,6 +157,13 @@
             width: 80%;
             height: 80%;
         }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
     </style>
 </head>
 <body>
@@ -206,7 +171,7 @@
     <div class="host-background"></div>
 
     <!-- Pierwszy ekran gry -->
-    <div class="container">
+    <div class="container" id="gameContainer">
         <h1>Parodia Milionerów</h1>
         <div class="question">Musisz otworzyć szafkę w biurze. Ty znajdujesz się 150km od biura. Co robisz?</div>
         <div class="answers">
@@ -224,7 +189,7 @@
     </div>
 
     <!-- Drugi ekran CTA -->
-    <div class="cta-section break-into-pieces" id="ctaSection">
+    <div class="cta-section" id="ctaSection">
         <div class="cta-text">HILS - Twój przyjaciel od zarządzania dostępem</div>
         <button class="cta-button">Pobierz broszurę</button>
     </div>
@@ -234,22 +199,63 @@
         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
+    <!-- Three.js do efektów 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
+        let scene, camera, renderer, pieces = [];
+
         function phoneAFriend() {
-            document.body.style.backgroundColor = '#192e4c';
             document.querySelector('.container').style.display = 'none';
             const ctaSection = document.getElementById('ctaSection');
             ctaSection.style.display = 'flex';
 
-            // Po 3 sekundach rozpoczynamy animację rozpadu strony
+            // Po 3 sekundach wywołaj efekt rozpadu
             setTimeout(function() {
-                ctaSection.classList.add('break-into-pieces');
+                ctaSection.style.display = 'none'; // Ukrywamy CTA
+                explodeEffect();
+            }, 3000);
+        }
 
-                // Po 1 sekundzie (czas trwania animacji) pokazujemy film
-                setTimeout(function() {
-                    document.getElementById('videoContainer').style.display = 'flex';
-                    ctaSection.style.display = 'none'; // Ukrywamy sekcję CTA
-                }, 1000);
+        function explodeEffect() {
+            // Inicjalizacja sceny, kamery i renderera
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Dodaj fragmenty ekranu do sceny
+            for (let i = 0; i < 100; i++) {
+                let geometry = new THREE.BoxGeometry(1, 1, 1);
+                let material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff });
+                let cube = new THREE.Mesh(geometry, material);
+                cube.position.set(Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5);
+                cube.velocity = new THREE.Vector3(Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1);
+                pieces.push(cube);
+                scene.add(cube);
+            }
+
+            camera.position.z = 5;
+
+            animateExplosion();
+        }
+
+        function animateExplosion() {
+            requestAnimationFrame(animateExplosion);
+
+            pieces.forEach(piece => {
+                piece.position.add(piece.velocity);
+                piece.rotation.x += 0.05;
+                piece.rotation.y += 0.05;
+            });
+
+            renderer.render(scene, camera);
+
+            // Po 3 sekundach zakończ eksplozję i pokaż film
+            setTimeout(function() {
+                document.getElementById('videoContainer').style.display = 'flex';
+                renderer.domElement.remove(); // Usuwamy canvas po eksplozji
             }, 3000);
         }
     </script>
