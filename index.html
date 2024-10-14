@@ -111,6 +111,26 @@
             cursor: pointer;
         }
 
+        .lifelines {
+            margin-top: 20px;
+        }
+
+        .lifeline {
+            background-color: white;
+            color: #0077b6;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #0077b6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .lifeline:hover {
+            background-color: #0077b6;
+            color: white;
+        }
+
         .video-container {
             display: none;
             position: absolute;
@@ -148,6 +168,12 @@
             <div class="answer">b). Proszę pracownika z biura o wyrwanie frontu szafki</div>
             <div class="answer">c). Szukam teleportera w Google</div>
             <div class="answer">d). Godzę się z losem</div>
+        </div>
+
+        <div class="lifelines">
+            <button class="lifeline" onclick="phoneAFriend()">Telefon do przyjaciela</button>
+            <button class="lifeline">50/50</button>
+            <button class="lifeline">Pytanie do publiczności</button>
         </div>
     </div>
 
@@ -228,14 +254,14 @@
         }
 
         function animateExplosion() {
-            let gravity = 0.005;  // Grawitacja
+            let gravity = 0.005;
             function animate() {
                 pieces.forEach(piece => {
                     piece.position.add(piece.velocity);
                     piece.rotation.x += piece.rotationVelocity.x;
                     piece.rotation.y += piece.rotationVelocity.y;
                     piece.rotation.z += piece.rotationVelocity.z;
-                    piece.velocity.y -= gravity;  // Efekt grawitacji
+                    piece.velocity.y -= gravity;
                 });
 
                 renderer.render(scene, camera);
