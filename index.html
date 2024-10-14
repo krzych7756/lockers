@@ -200,7 +200,7 @@
 
             setTimeout(function() {
                 ctaSection.style.display = 'none';
-                explodeEffect();
+                explodeEffect(); // Cała strona eksploduje
             }, 3000);
         }
 
@@ -254,14 +254,14 @@
         }
 
         function animateExplosion() {
-            let gravity = 0.005;
+            let gravity = 0.005;  // Grawitacja
             function animate() {
                 pieces.forEach(piece => {
                     piece.position.add(piece.velocity);
                     piece.rotation.x += piece.rotationVelocity.x;
                     piece.rotation.y += piece.rotationVelocity.y;
                     piece.rotation.z += piece.rotationVelocity.z;
-                    piece.velocity.y -= gravity;
+                    piece.velocity.y -= gravity;  // Efekt grawitacji
                 });
 
                 renderer.render(scene, camera);
