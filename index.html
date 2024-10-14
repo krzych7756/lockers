@@ -200,7 +200,7 @@
 
             setTimeout(function() {
                 ctaSection.style.display = 'none';
-                explodeEffect(); // Cała strona eksploduje
+                explodeEffect(); // Cała strona eksploduje, w tym tło
             }, 3000);
         }
 
@@ -220,6 +220,7 @@
                 const fragmentWidth = canvas.width / cols;
                 const fragmentHeight = canvas.height / rows;
 
+                // Pocięcie całości na fragmenty, w tym tło
                 for (let i = 0; i < rows; i++) {
                     for (let j = 0; j < cols; j++) {
                         let fragmentCanvas = document.createElement('canvas');
@@ -238,7 +239,7 @@
                         piece.position.x = (j - cols / 2) * 1.1;
                         piece.position.y = (i - rows / 2) * 1.1;
 
-                        // Losowe prędkości i rotacje
+                        // Losowe prędkości i rotacje dla fragmentów strony, w tym tła
                         piece.velocity = new THREE.Vector3(Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1, Math.random() * 0.2 - 0.1);
                         piece.rotationVelocity = new THREE.Vector3(Math.random() * 0.1, Math.random() * 0.1, Math.random() * 0.1);
 
